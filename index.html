@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Свадебное приглашение</title>
+    <meta
+      name="description"
+      content="Цифровое свадебное приглашение с программой дня, деталями и RSVP-формой."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero section reveal" id="hero">
+        <div class="hero-media card">
+          <img
+            src="assets/img/couple/hero.jpg"
+            alt="Фото пары для приветственного блока"
+            onerror="this.closest('.hero-media').classList.add('is-empty'); this.remove();"
+          />
+          <div class="hero-media-placeholder">
+            <span>Сюда позже подставим hero-фото</span>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow">Свадебное приглашение</p>
+          <h1>Дорогие родные и близкие!</h1>
+          <p class="hero-text">
+            Один день в этом году будет для нас особенным, и мы хотим
+            разделить его с вами. Очень ждём вас 19.06.2026.
+          </p>
+          <a class="scroll-link" href="#date">Листайте вниз</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="section section-date reveal" id="date">
+          <div class="section-heading">
+            <p class="eyebrow">Дата</p>
+            <h2>19 июня 2026</h2>
+          </div>
+          <div class="date-card card">
+            <p class="date-card-day">19</p>
+            <div>
+              <p class="date-card-month">июня</p>
+              <p class="date-card-year">2026</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="schedule">
+          <div class="section-heading">
+            <p class="eyebrow">План дня</p>
+            <h2>Как пройдёт наш день</h2>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item card">
+              <p class="timeline-time">15:50</p>
+              <h3>Сбор гостей</h3>
+              <p>ЗАГС — все в ожидании и мы тоже.</p>
+              <p class="timeline-note">Адрес: Страх стрит</p>
+            </article>
+
+            <article class="timeline-item card">
+              <p class="timeline-time">16:00</p>
+              <h3>Торжественная церемония</h3>
+              <p>Говорим друг другу «да» и обнимаемся счастливые.</p>
+            </article>
+
+            <article class="timeline-item card">
+              <p class="timeline-time">16:45–17:00</p>
+              <h3>Праздничный ужин</h3>
+              <p>
+                Еда, танцы, фото, тосты, конкурсы и всё, что только захотим в
+                кругу самых лучших людей на земле.
+              </p>
+              <p class="timeline-note">ГК «Царь», зал «Роман»</p>
+              <p class="timeline-note">Адрес: Страх стрит</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section reveal" id="location">
+          <div class="section-heading">
+            <p class="eyebrow">Локации</p>
+            <h2>Как нас найти</h2>
+          </div>
+
+          <div class="cards-grid">
+            <article class="card location-card">
+              <figure class="venue-media image-frame venue-frame card-soft">
+                <img
+                  src="assets/img/venue/zags.jpg"
+                  alt="Фото ЗАГСа"
+                  onerror="this.closest('.image-frame').classList.add('is-empty'); this.remove();"
+                />
+                <div class="image-placeholder"><span>zags.jpg</span></div>
+              </figure>
+              <div>
+                <h3>ЗАГС</h3>
+                <p>Страх стрит</p>
+              </div>
+              <a
+                class="button button-secondary"
+                href="https://www.google.com/maps/search/?api=1&query=Red+Square+Moscow"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Открыть на карте</a
+              >
+            </article>
+
+            <article class="card location-card">
+              <figure class="venue-media image-frame venue-frame card-soft">
+                <img
+                  src="assets/img/venue/restaurant.jpg"
+                  alt="Фото ресторана"
+                  onerror="this.closest('.image-frame').classList.add('is-empty'); this.remove();"
+                />
+                <div class="image-placeholder"><span>restaurant.jpg</span></div>
+              </figure>
+              <div>
+                <h3>Ресторан «Царь» · зал «Роман»</h3>
+                <p>Страх стрит</p>
+              </div>
+              <a
+                class="button button-secondary"
+                href="https://www.google.com/maps/search/?api=1&query=Arbat+Moscow"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Открыть на карте</a
+              >
+            </article>
+          </div>
+        </section>
+
+        <section class="section reveal" id="dress-code">
+          <div class="section-heading">
+            <p class="eyebrow">Настроение дня</p>
+            <h2>Дресс-код</h2>
+          </div>
+
+          <div class="card">
+            <p>
+              В этот день все правила отменяются. Приходите в удобной одежде для
+              вас или в том, что хотите выгулять.
+            </p>
+            <div class="swatches" aria-label="Мягкая палитра настроения">
+              <span class="swatch swatch-1"></span>
+              <span class="swatch swatch-2"></span>
+              <span class="swatch swatch-3"></span>
+              <span class="swatch swatch-4"></span>
+              <span class="swatch swatch-5"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section reveal" id="details">
+          <div class="section-heading">
+            <p class="eyebrow">Детали</p>
+            <h2>Небольшие пожелания</h2>
+          </div>
+
+          <div class="cards-grid">
+            <article class="card">
+              <h3>Книга вместо цветов</h3>
+              <p>
+                Мы будем рады, если вместо цветов вы подарите вашу любимую книгу
+                для нашей семейной библиотеки.
+              </p>
+            </article>
+
+            <article class="card details-card">
+              <div>
+                <h3>Цветочная подписка</h3>
+                <p>
+                  Можно поучаствовать в цветочной подписке — позже здесь будет
+                  ссылка и финальный текст.
+                </p>
+                <a class="button" href="#" aria-disabled="true">Ссылка появится позже</a>
+              </div>
+
+              <div class="details-qr card-soft">
+                <img
+                  src="assets/img/details/flowers-qr.jpg"
+                  alt="QR-код для цветочной подписки"
+                  onerror="this.closest('.details-qr').classList.add('is-empty'); this.remove();"
+                />
+                <div class="qr-placeholder">
+                  <span>QR-код подставим позже</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section reveal" id="gallery">
+          <div class="section-heading">
+            <p class="eyebrow">Фотографии</p>
+            <h2>Немного нас</h2>
+          </div>
+
+          <div class="gallery-grid">
+            <figure class="gallery-card card image-frame">
+              <img
+                src="assets/img/couple/gallery-1.jpg"
+                alt="Фото пары 1"
+                onerror="this.closest('.image-frame').classList.add('is-empty'); this.remove();"
+              />
+              <div class="image-placeholder"><span>gallery-1.jpg</span></div>
+            </figure>
+            <figure class="gallery-card card image-frame">
+              <img
+                src="assets/img/couple/gallery-2.jpg"
+                alt="Фото пары 2"
+                onerror="this.closest('.image-frame').classList.add('is-empty'); this.remove();"
+              />
+              <div class="image-placeholder"><span>gallery-2.jpg</span></div>
+            </figure>
+            <figure class="gallery-card card image-frame">
+              <img
+                src="assets/img/couple/gallery-3.jpg"
+                alt="Фото пары 3"
+                onerror="this.closest('.image-frame').classList.add('is-empty'); this.remove();"
+              />
+              <div class="image-placeholder"><span>gallery-3.jpg</span></div>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section reveal" id="rsvp">
+          <div class="section-heading">
+            <p class="eyebrow">RSVP</p>
+            <h2>Пожалуйста, ответьте на несколько вопросов</h2>
+          </div>
+
+          <form
+            class="card rsvp-form"
+            id="rsvp-form"
+            novalidate
+            data-mode="demo"
+            data-test-email="craft.754.pinto@gmail.com"
+          >
+            <div class="form-row">
+              <label for="guest-name">Имя и фамилия</label>
+              <input
+                id="guest-name"
+                name="primary_guest_name"
+                type="text"
+                placeholder="Например, Анна Иванова"
+                required
+              />
+            </div>
+
+            <div class="card-soft guest-list-block">
+              <div class="guest-list-head">
+                <div>
+                  <p class="guest-list-title">Кто ещё будет с вами</p>
+                  <p class="guest-list-copy">
+                    Добавьте имена и фамилии остальных гостей из семьи, если вы
+                    заполняете форму сразу за всех.
+                  </p>
+                </div>
+                <button
+                  class="button button-secondary button-small"
+                  type="button"
+                  id="add-family-member"
+                >
+                  Добавить гостя
+                </button>
+              </div>
+
+              <div class="guest-members" id="family-members"></div>
+              <p class="guest-limit-note" id="guest-limit-note" aria-live="polite"></p>
+            </div>
+
+            <fieldset class="form-row attendance-fieldset">
+              <legend>Получится ли прийти</legend>
+              <div class="choice-group">
+                <label class="choice-chip">
+                  <input type="radio" name="attendance" value="Да, с радостью приду / придём" required />
+                  <span>Да, с радостью</span>
+                </label>
+                <label class="choice-chip">
+                  <input type="radio" name="attendance" value="К сожалению, не получится" />
+                  <span>К сожалению, не получится</span>
+                </label>
+                <label class="choice-chip">
+                  <input type="radio" name="attendance" value="Пока не уверен(а)" />
+                  <span>Пока не уверен(а)</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-row">
+              <label for="drinks">Ваши предпочтения по напиткам</label>
+              <textarea
+                id="drinks"
+                name="drinks"
+                rows="4"
+                placeholder="Можно написать свободно"
+              ></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button class="button" type="submit">Отправить ответ</button>
+              <p class="form-status" id="form-status" aria-live="polite"></p>
+            </div>
+          </form>
+        </section>
+      </main>
+
+      <footer class="section closing reveal" id="closing">
+        <div class="card closing-card">
+          <p class="eyebrow">До встречи</p>
+          <h2>Будем счастливы разделить этот день вместе с вами</h2>
+          <p>Спасибо, что вы с нами в этот особенный день.</p>
+        </div>
+      </footer>
+    </div>
+
+    <template id="family-member-template">
+      <div class="family-member-row">
+        <div class="form-row family-member-field">
+          <label>Имя и фамилия гостя</label>
+          <input type="text" name="family_names[]" placeholder="Например, Иван Иванов" />
+        </div>
+        <button class="button button-secondary button-small remove-family-member" type="button">
+          Удалить
+        </button>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
