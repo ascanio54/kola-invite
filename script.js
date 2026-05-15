@@ -1,160 +1,133 @@
-const revealItems = document.querySelectorAll('.reveal');
-const form = document.querySelector('#rsvp-form');
-const formStatus = document.querySelector('#form-status');
-const familyMembersContainer = document.querySelector('#family-members');
-const addFamilyMemberButton = document.querySelector('#add-family-member');
-const familyTemplate = document.querySelector('#family-member-template');
-const guestLimitNote = document.querySelector('#guest-limit-note');
+const revealItems = document.querySelectorAll(".reveal");
 
-const FAMILY_LIMIT = 10;
-
-const showStatus = (message, type = 'default') => {
-  if (!formStatus) return;
-  formStatus.textContent = message;
-  formStatus.classList.remove('is-success', 'is-error');
-
-  if (type === 'success') formStatus.classList.add('is-success');
-  if (type === 'error') formStatus.classList.add('is-error');
-};
-
-const getFamilyMemberCount = () =>
-  familyMembersContainer ? familyMembersContainer.querySelectorAll('.family-member-row').length : 0;
-
-const updateFamilyControls = () => {
-  if (!familyMembersContainer || !addFamilyMemberButton || !guestLimitNote) return;
-
-  const count = getFamilyMemberCount();
-  const remaining = FAMILY_LIMIT - count;
-
-  addFamilyMemberButton.disabled = count >= FAMILY_LIMIT;
-  addFamilyMemberButton.setAttribute('aria-disabled', String(count >= FAMILY_LIMIT));
-
-  if (count === 0) {
-    guestLimitNote.textContent = `Можно добавить до ${FAMILY_LIMIT} дополнительных гостей.`;
-    return;
-  }
-
-  if (remaining > 0) {
-    guestLimitNote.textContent = `Добавлено гостей: ${count}. Можно добавить ещё ${remaining}.`;
-    return;
-  }
-
-  guestLimitNote.textContent = 'Достигнут лимит: 10 дополнительных гостей.';
-};
-
-const createFamilyMember = () => {
-  if (!familyTemplate || !familyMembersContainer) return;
-  if (getFamilyMemberCount() >= FAMILY_LIMIT) {
-    updateFamilyControls();
-    return;
-  }
-
-  const fragment = familyTemplate.content.cloneNode(true);
-  const row = fragment.querySelector('.family-member-row');
-  const input = fragment.querySelector('input');
-  const label = fragment.querySelector('label');
-  const removeButton = fragment.querySelector('.remove-family-member');
-  const nextIndex = getFamilyMemberCount() + 2;
-
-  if (input) {
-    input.id = `family-member-${nextIndex}`;
-  }
-
-  if (label) {
-    label.setAttribute('for', `family-member-${nextIndex}`);
-    label.textContent = `Имя и фамилия гостя ${nextIndex}`;
-  }
-
-  if (removeButton) {
-    removeButton.addEventListener('click', () => {
-      row?.remove();
-      renumberFamilyMembers();
-      updateFamilyControls();
-    });
-  }
-
-  familyMembersContainer.appendChild(fragment);
-  updateFamilyControls();
-};
-
-const renumberFamilyMembers = () => {
-  if (!familyMembersContainer) return;
-
-  const rows = familyMembersContainer.querySelectorAll('.family-member-row');
-  rows.forEach((row, index) => {
-    const number = index + 2;
-    const input = row.querySelector('input');
-    const label = row.querySelector('label');
-
-    if (input) {
-      input.id = `family-member-${number}`;
-    }
-
-    if (label) {
-      label.setAttribute('for', `family-member-${number}`);
-      label.textContent = `Имя и фамилия гостя ${number}`;
-    }
-  });
-};
-
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
     },
     {
       threshold: 0.12,
-    }
+    },
   );
 
-  revealItems.forEach((item) => observer.observe(item));
+  revealItems.forEach((item) => revealObserver.observe(item));
 } else {
-  revealItems.forEach((item) => item.classList.add('is-visible'));
+  revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-if (addFamilyMemberButton) {
-  addFamilyMemberButton.addEventListener('click', createFamilyMember);
-  updateFamilyControls();
+const form = document.querySelector("#rsvp-form");
+const addFamilyButton = document.querySelector("#add-family-member");
+const familyMembers = document.querySelector("#family-members");
+const submitButton = form?.querySelector('button[type="submit"]');
+const successBox = document.querySelector("[data-form-success]");
+const errorBox = document.querySelector("[data-form-error]");
+const iframe = document.querySelector("#rsvp_target");
+
+const MAX_EXTRA_GUESTS = 10;
+let submitInProgress = false;
+
+function hideFormMessages() {
+  if (successBox) successBox.hidden = true;
+  if (errorBox) errorBox.hidden = true;
 }
 
-if (form) {
-  form.addEventListener('submit', async (event) => {
-    const mode = form.dataset.mode || 'demo';
-    const testEmail = form.dataset.testEmail || '';
-    const formData = new FormData(form);
-    const primaryGuestName = String(formData.get('primary_guest_name') || '').trim();
-    const attendance = String(formData.get('attendance') || '').trim();
+function getExtraGuestCount() {
+  return familyMembers
+    ? familyMembers.querySelectorAll(".family-member").length
+    : 0;
+}
 
-    if (!primaryGuestName) {
-      event.preventDefault();
-      showStatus('Пожалуйста, укажите имя и фамилию.', 'error');
-      form.querySelector('#guest-name')?.focus();
-      return;
+function updateAddFamilyButtonState() {
+  if (!addFamilyButton) return;
+
+  const isLimitReached = getExtraGuestCount() >= MAX_EXTRA_GUESTS;
+  addFamilyButton.disabled = isLimitReached;
+}
+
+function createFamilyMemberField() {
+  if (!familyMembers) return;
+
+  if (getExtraGuestCount() >= MAX_EXTRA_GUESTS) {
+    updateAddFamilyButtonState();
+    return;
+  }
+
+  const fieldId = `family-member-${Date.now()}`;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "family-member";
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.name = "family";
+  input.id = fieldId;
+  input.placeholder = "Имя и фамилия";
+  input.autocomplete = "name";
+
+  const removeButton = document.createElement("button");
+  removeButton.type = "button";
+  removeButton.className = "remove-family-member";
+  removeButton.setAttribute("aria-label", "Удалить гостя");
+  removeButton.textContent = "×";
+
+  removeButton.addEventListener("click", () => {
+    wrapper.remove();
+    updateAddFamilyButtonState();
+  });
+
+  wrapper.append(input, removeButton);
+  familyMembers.append(wrapper);
+
+  input.focus();
+  updateAddFamilyButtonState();
+}
+
+addFamilyButton?.addEventListener("click", createFamilyMemberField);
+
+if (form && iframe) {
+  hideFormMessages();
+
+  form.addEventListener("submit", () => {
+    hideFormMessages();
+    submitInProgress = true;
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Отправляем...";
+    }
+  });
+
+  iframe.addEventListener("load", () => {
+    if (!submitInProgress) return;
+
+    submitInProgress = false;
+
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = "Отправить ответ";
     }
 
-    if (!attendance) {
-      event.preventDefault();
-      showStatus('Пожалуйста, выберите, получится ли прийти.', 'error');
-      return;
+    form.reset();
+
+    if (familyMembers) {
+      familyMembers.innerHTML = "";
     }
 
-    if (mode === 'demo') {
-      event.preventDefault();
-      const suffix = testEmail ? ` Тестовый email для будущей отправки: ${testEmail}.` : '';
-      showStatus(`Черновой режим: форма локально проверена.${suffix}`, 'success');
-      form.reset();
-      if (familyMembersContainer) {
-        familyMembersContainer.innerHTML = '';
-      }
-      updateFamilyControls();
-      return;
-    }
+    updateAddFamilyButtonState();
 
-    showStatus('Отправляем ответ…');
+    if (successBox) {
+      successBox.hidden = false;
+      successBox.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
   });
 }
+
+updateAddFamilyButtonState();
