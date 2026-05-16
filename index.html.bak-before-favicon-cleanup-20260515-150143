@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Свадебное приглашение — 19.06.2026</title>
+
+        <meta
+            name="description"
+            content="Дорогие родные и близкие! Очень ждём вас 19.06.2026."
+        />
+
+        <meta name="theme-color" content="#f5f0e8" />
+
+        <link
+            rel="icon"
+            type="image/png"
+            href="./assets/icons/favicon.png?v=1"
+        />
+        <link
+            rel="apple-touch-icon"
+            href="./assets/icons/apple-touch-icon.png?v=1"
+        />
+
+        <link rel="stylesheet" href="./styles.css" />
+    </head>
+
+    <body>
+        <main class="page">
+            <section class="hero section reveal">
+                <div class="hero__image-wrap">
+                    <img
+                        class="hero__image"
+                        src="./assets/img/couple/hero.jpg"
+                        alt="Фото пары"
+                    />
+                </div>
+
+                <div class="hero__content">
+                    <p class="eyebrow">Свадебное приглашение</p>
+                    <h1>Дорогие родные и близкие!</h1>
+                    <p class="hero__text">
+                        Один день в этом году будет для нас особенным, и мы
+                        хотим разделить его с вами.
+                    </p>
+                    <p class="hero__date">19.06.2026</p>
+                    <p class="scroll-cue">Листайте вниз</p>
+                </div>
+            </section>
+
+            <section class="date-card section reveal">
+                <p class="eyebrow">Сохраняйте дату</p>
+                <h2>19 июня 2026</h2>
+                <p>
+                    Очень ждём вас в этот день — будем счастливы разделить его с
+                    самыми близкими людьми.
+                </p>
+            </section>
+
+            <section class="section reveal" id="plan">
+                <div class="section-heading">
+                    <p class="eyebrow">План дня</p>
+                    <h2>Как всё будет</h2>
+                </div>
+
+                <div class="timeline">
+                    <article class="timeline-item">
+                        <div class="timeline-item__time">15:50</div>
+                        <div class="timeline-item__body">
+                            <h3>Сбор гостей</h3>
+                            <p>ЗАГС — все в ожидании, и мы тоже.</p>
+                            <p class="muted">Адрес: Страх стрит</p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-item__time">16:00</div>
+                        <div class="timeline-item__body">
+                            <h3>Торжественная церемония</h3>
+                            <p>
+                                Говорим друг другу «да» и обнимаемся счастливые.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="timeline-item">
+                        <div class="timeline-item__time">16:45</div>
+                        <div class="timeline-item__body">
+                            <h3>Праздничный ужин</h3>
+                            <p>
+                                Еда, танцы, фото, тосты, конкурсы и всё, что
+                                только захотим в кругу самых лучших людей на
+                                земле.
+                            </p>
+                            <p class="muted">
+                                Ресторан в гостиничном комплексе «Царь», зал
+                                «Роман». Адрес: Страх стрит.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section reveal" id="places">
+                <div class="section-heading">
+                    <p class="eyebrow">Места</p>
+                    <h2>Куда приезжать</h2>
+                </div>
+
+                <div class="venue-grid">
+                    <article class="venue-card">
+                        <img
+                            class="venue-card__image"
+                            src="./assets/img/venue/zags.jpg"
+                            alt="Фото ЗАГСа"
+                        />
+                        <div class="venue-card__body">
+                            <h3>ЗАГС</h3>
+                            <p>Страх стрит</p>
+                            <a
+                                class="button button--small"
+                                href="PASTE_ZAGS_GOOGLE_MAPS_LINK_HERE"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Открыть на карте
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="venue-card">
+                        <img
+                            class="venue-card__image"
+                            src="./assets/img/venue/restaurant.jpg"
+                            alt="Фото ресторана"
+                        />
+                        <div class="venue-card__body">
+                            <h3>Ресторан «Царь»</h3>
+                            <p>Зал «Роман», Страх стрит</p>
+                            <a
+                                class="button button--small"
+                                href="PASTE_RESTAURANT_GOOGLE_MAPS_LINK_HERE"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Открыть на карте
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section dress-code reveal">
+                <div class="section-heading">
+                    <p class="eyebrow">Dress code</p>
+                    <h2>Без строгих правил</h2>
+                </div>
+
+                <div class="soft-card">
+                    <p>
+                        В этот день все правила отменяются. Приходите в удобной
+                        одежде для вас или в том, что хотите выгулять.
+                    </p>
+
+                    <div class="palette" aria-label="Мягкая палитра настроения">
+                        <span class="swatch swatch--cream"></span>
+                        <span class="swatch swatch--sage"></span>
+                        <span class="swatch swatch--olive"></span>
+                        <span class="swatch swatch--taupe"></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section reveal" id="details">
+                <div class="section-heading">
+                    <p class="eyebrow">Детали</p>
+                    <h2>Пару важных пожеланий</h2>
+                </div>
+
+                <div class="details-grid">
+                    <article class="soft-card">
+                        <h3>Книга вместо цветов</h3>
+                        <p>
+                            Мы будем рады, если вместо цветов вы подарите вашу
+                            любимую книгу для нашей семейной библиотеки.
+                        </p>
+                    </article>
+
+                    <article class="soft-card flower-card">
+                        <div class="flower-card__text">
+                            <h3>Цветочная подписка</h3>
+                            <p>
+                                Или можно поучаствовать в цветочной подписке —
+                                общем фонде на свежие букеты после свадьбы.
+                            </p>
+                            <a
+                                class="button button--secondary"
+                                href="PASTE_FLOWER_SUBSCRIPTION_LINK_HERE"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                Ссылка появится позже
+                            </a>
+                        </div>
+
+                        <div class="qr-box">
+                            <img
+                                class="qr-box__image"
+                                src="./assets/img/details/flowers-qr.jpg"
+                                alt="QR-код для цветочной подписки"
+                            />
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="section gallery-section reveal">
+                <div class="section-heading">
+                    <p class="eyebrow">Фото</p>
+                    <h2>Немного нас</h2>
+                </div>
+
+                <div class="gallery">
+                    <img
+                        src="./assets/img/couple/gallery-1.jpg"
+                        alt="Фото пары 1"
+                    />
+                    <img
+                        src="./assets/img/couple/gallery-2.jpg"
+                        alt="Фото пары 2"
+                    />
+                    <img
+                        src="./assets/img/couple/gallery-3.jpg"
+                        alt="Фото пары 3"
+                    />
+                </div>
+            </section>
+
+            <section class="section rsvp-section reveal" id="rsvp">
+                <div class="section-heading">
+                    <p class="eyebrow">RSVP</p>
+                    <h2>Ответьте, пожалуйста</h2>
+                    <p>
+                        Чтобы всё прошло идеально, пожалуйста, ответьте на
+                        несколько вопросов.
+                    </p>
+                </div>
+
+                <form
+                    id="rsvp-form"
+                    class="rsvp-form"
+                    action="https://script.google.com/macros/s/AKfycbwg0AE6hrccVV6sFopcsmSqwgFYHC5S3AhsPm7XnQhVrwZsKbZvinniYIZdP11uOLaoJQ/exec"
+                    method="POST"
+                    target="rsvp_target"
+                >
+                    <input
+                        type="hidden"
+                        name="source"
+                        value="GitHub Pages RSVP"
+                    />
+
+                    <input
+                        class="hp-field"
+                        type="text"
+                        name="website"
+                        tabindex="-1"
+                        autocomplete="off"
+                    />
+
+                    <div class="form-group">
+                        <label for="guest-name">Имя и фамилия</label>
+                        <input
+                            id="guest-name"
+                            name="name"
+                            type="text"
+                            autocomplete="name"
+                            required
+                            placeholder="Например: Анна Иванова"
+                        />
+                    </div>
+
+                    <div class="family-block">
+                        <div class="family-block__header">
+                            <div>
+                                <h3>Если вы будете не одни</h3>
+                                <p>
+                                    Можно добавить имена тех, кто придёт вместе
+                                    с вами.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div id="family-members" class="family-members"></div>
+
+                        <button
+                            id="add-family-member"
+                            class="button button--secondary button--full"
+                            type="button"
+                        >
+                            Добавить гостя
+                        </button>
+                    </div>
+
+                    <fieldset class="form-group">
+                        <legend>Получится ли прийти?</legend>
+
+                        <label class="radio-card">
+                            <input
+                                type="radio"
+                                name="attendance"
+                                value="Да, с радостью придём"
+                                required
+                            />
+                            <span>Да, с радостью придём</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input
+                                type="radio"
+                                name="attendance"
+                                value="К сожалению, не получится"
+                            />
+                            <span>К сожалению, не получится</span>
+                        </label>
+
+                        <label class="radio-card">
+                            <input
+                                type="radio"
+                                name="attendance"
+                                value="Пока не уверены"
+                            />
+                            <span>Пока не уверены</span>
+                        </label>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <label for="drinks">Предпочтения по напиткам</label>
+                        <textarea
+                            id="drinks"
+                            name="drinks"
+                            rows="4"
+                            placeholder="Можно написать в свободной форме"
+                        ></textarea>
+                    </div>
+
+                    <p
+                        class="form-message form-message--success"
+                        data-form-success
+                        hidden
+                    >
+                        Спасибо! Мы получили ваш ответ.
+                    </p>
+
+                    <p
+                        class="form-message form-message--error"
+                        data-form-error
+                        hidden
+                    >
+                        Не удалось отправить форму. Попробуйте ещё раз чуть
+                        позже.
+                    </p>
+
+                    <button
+                        class="button button--primary button--full"
+                        type="submit"
+                    >
+                        Отправить ответ
+                    </button>
+                </form>
+
+                <iframe
+                    id="rsvp_target"
+                    name="rsvp_target"
+                    title="RSVP form target"
+                    hidden
+                ></iframe>
+            </section>
+
+            <section class="section closing reveal">
+                <p class="eyebrow">До встречи</p>
+                <h2>Спасибо, что вы с нами в этот особенный день</h2>
+                <p>Будем счастливы разделить его вместе с вами.</p>
+            </section>
+        </main>
+
+        <script src="./script.js"></script>
+    </body>
+</html>
