@@ -8182,3 +8182,161 @@ body:not(.gsap-loader-enabled) .invite-photo-card {
 }
 /* === KOLA HERO TOP ROW V14 END === */
 
+/* === KOLA HERO OVERFLOW AND ORNAMENT V15 START === */
+/*
+  Fixes:
+  - prevent mobile loader/right-side clipping caused by horizontal overflow;
+  - reduce floral SVG width on desktop and mobile;
+  - remove top paper strip above hero photo;
+  - keep photo as top hero background only.
+*/
+
+/* Global safety: no horizontal page expansion from large decorative layers. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip !important;
+  }
+}
+
+/* Loader must always fit the real mobile viewport. */
+.kola-loader,
+.invite-loader {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100dvw !important;
+  max-width: 100dvw !important;
+  overflow: hidden !important;
+}
+
+.invite-loader-scene {
+  width: min(calc(100dvw - 24px), 470px) !important;
+  max-width: calc(100dvw - 24px) !important;
+  margin-inline: auto !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 430px) {
+  .invite-loader-scene {
+    width: calc(100dvw - 18px) !important;
+    max-width: calc(100dvw - 18px) !important;
+  }
+
+  .invite-envelope-wrap {
+    width: min(calc(100dvw - 46px), 335px) !important;
+  }
+
+  .invite-photo-card {
+    width: min(calc(100dvw - 70px), 294px) !important;
+  }
+}
+
+/* Remove the paper strip above the hero. */
+.page {
+  padding-top: 0 !important;
+}
+
+.hero-slideshow-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* The photo should start from the top of the hero block. */
+.hero-clean-card,
+.hero-clean-slideshow {
+  margin-top: 0 !important;
+}
+
+/* Keep the top labels inside the photo with enough breathing room. */
+.hero-clean-slideshow {
+  --kola-hero-top-row-y: clamp(22px, 5vw, 34px);
+  --kola-hero-top-row-x: clamp(18px, 5vw, 34px);
+}
+
+/* Floral ornament: smaller and controlled.
+   It may slightly leave the photo sides, but must not create horizontal scroll. */
+.hero-photo-signature__ornament {
+  bottom: clamp(-96px, -18vw, -68px) !important;
+  width: min(122%, 820px) !important;
+  max-width: none !important;
+  z-index: 3 !important;
+  opacity: 0.93 !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Names stay readable above the ornament. */
+.hero-photo-signature__names {
+  bottom: clamp(150px, 39vw, 226px) !important;
+  z-index: 7 !important;
+}
+
+/* Date remains top-right after V14. */
+.hero-clean-slideshow .hero-photo-signature__date {
+  top: var(--kola-hero-top-row-y) !important;
+  right: var(--kola-hero-top-row-x) !important;
+  bottom: auto !important;
+}
+
+/* Left label remains top-left after V14. */
+.hero-clean-slideshow > .hero__topline {
+  top: var(--kola-hero-top-row-y) !important;
+  left: var(--kola-hero-top-row-x) !important;
+}
+
+/* Mobile: ornament smaller than before, no side overflow problem. */
+@media (max-width: 430px) {
+  .hero-photo-signature__ornament {
+    width: 126% !important;
+    bottom: -86px !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 150px !important;
+  }
+}
+
+/* Very narrow phones. */
+@media (max-width: 370px) {
+  .hero-photo-signature__ornament {
+    width: 130% !important;
+    bottom: -80px !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 144px !important;
+  }
+}
+
+/* Desktop/tablet: ornament almost to photo edges, only slight overflow. */
+@media (min-width: 720px) {
+  .page {
+    padding-top: 0 !important;
+  }
+
+  .hero-clean-card {
+    overflow: visible !important;
+  }
+
+  .hero-clean-slideshow {
+    overflow: visible !important;
+    margin-bottom: 66px !important;
+  }
+
+  .hero-photo-signature__ornament {
+    width: min(108%, 820px) !important;
+    bottom: -72px !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: clamp(218px, 23vw, 292px) !important;
+  }
+}
+/* === KOLA HERO OVERFLOW AND ORNAMENT V15 END === */
+
