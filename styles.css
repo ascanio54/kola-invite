@@ -8397,3 +8397,118 @@ body {
 }
 /* === KOLA HERO RADIUS FIX V16 END === */
 
+/* === KOLA HERO DATE UNDER NAMES V18 START === */
+/*
+  Final hero text layout:
+  - remove top-left invite label;
+  - remove top-right date behavior;
+  - show “19 июня 2026” under “Оля и Костя”;
+  - keep ornament as lower transition.
+*/
+
+/* If any old topline survives from previous patches, hide it. */
+.hero-slideshow-section .hero__topline,
+.hero-clean-slideshow > .hero__topline {
+  display: none !important;
+}
+
+/* Names stay above the ornament. */
+.hero-photo-signature__names {
+  bottom: clamp(168px, 41vw, 246px) !important;
+  z-index: 8 !important;
+}
+
+/* Date is now under names, not in the top-right corner. */
+.hero-clean-slideshow .hero-photo-signature__date,
+.hero-photo-signature__date {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: clamp(116px, 29vw, 168px) !important;
+  transform: translateX(-50%) !important;
+  z-index: 9 !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  max-width: calc(100% - 48px) !important;
+  margin: 0 !important;
+  padding: 6px 16px !important;
+
+  border: 1px solid rgba(255, 248, 237, 0.52) !important;
+  border-radius: 999px !important;
+  background: rgba(31, 45, 37, 0.22) !important;
+  box-shadow:
+    0 10px 24px rgba(18, 31, 25, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(6px);
+
+  color: #fff8ed !important;
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(0.96rem, 3.6vw, 1.28rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0.06em !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  font-variant-numeric: lining-nums tabular-nums;
+
+  text-shadow:
+    0 2px 3px rgba(20, 31, 25, 0.62),
+    0 10px 24px rgba(20, 31, 25, 0.34) !important;
+}
+
+/* Ornament remains lower and works as transition. */
+.hero-photo-signature__ornament {
+  bottom: clamp(-92px, -17vw, -62px) !important;
+  z-index: 3 !important;
+}
+
+/* Mobile tuning. */
+@media (max-width: 430px) {
+  .hero-photo-signature__names {
+    bottom: 172px !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date,
+  .hero-photo-signature__date {
+    bottom: 124px !important;
+    font-size: 1rem !important;
+    padding: 6px 15px !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -78px !important;
+  }
+}
+
+/* Very narrow phones. */
+@media (max-width: 370px) {
+  .hero-photo-signature__names {
+    bottom: 162px !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date,
+  .hero-photo-signature__date {
+    bottom: 116px !important;
+    font-size: 0.94rem !important;
+  }
+}
+
+/* Desktop/tablet. */
+@media (min-width: 720px) {
+  .hero-photo-signature__names {
+    bottom: clamp(240px, 24vw, 312px) !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date,
+  .hero-photo-signature__date {
+    bottom: clamp(178px, 17vw, 226px) !important;
+    font-size: clamp(1.12rem, 1.7vw, 1.42rem) !important;
+  }
+}
+/* === KOLA HERO DATE UNDER NAMES V18 END === */
+
