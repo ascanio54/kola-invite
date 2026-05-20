@@ -7161,3 +7161,1182 @@ body:not(.gsap-loader-enabled) .invite-photo-card {
 
 /* End Kola native loader fix: outer flap and wax seal v1 */
 
+/* === KOLA CLEAN HERO V9 START === */
+/*
+  Clean hero composition:
+  - one real photo slideshow;
+  - no old bottom cream panel;
+  - no handmade circles/leaves under the names;
+  - floral SVG is layered over the lower part of the photo;
+  - date and “Оля и Костя” are layered over the SVG;
+  - native CSS only.
+*/
+
+.hero-slideshow-section {
+  min-height: auto !important;
+  display: block !important;
+  margin: 0 0 54px !important;
+  padding: 22px 0 18px !important;
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  isolation: isolate !important;
+}
+
+.hero-slideshow-section::after,
+.hero-slideshow-section .hero__image-wrap,
+.hero-poster,
+.hero-poster__photo,
+.hero-poster__names {
+  display: none !important;
+  content: none !important;
+}
+
+.hero-slideshow-section .hero__topline {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  width: max-content !important;
+  max-width: calc(100% - 28px) !important;
+  margin: 0 auto 14px !important;
+  padding: 9px 15px !important;
+  border: 1px solid rgba(68, 51, 43, 0.12) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 248, 237, 0.76) !important;
+  color: rgba(68, 51, 43, 0.82) !important;
+  box-shadow: 0 12px 34px rgba(68, 51, 43, 0.08) !important;
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  text-shadow: none !important;
+}
+
+.hero-clean-card {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 34px !important;
+  background: #24382f !important;
+  box-shadow:
+    0 28px 78px rgba(46, 35, 31, 0.16),
+    inset 0 0 0 1px rgba(68, 51, 43, 0.10) !important;
+}
+
+.hero-clean-slideshow {
+  position: relative !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 853 / 1280 !important;
+  overflow: hidden !important;
+  border-radius: 34px !important;
+  background: #24382f !important;
+  isolation: isolate !important;
+}
+
+.hero-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1;
+  display: block !important;
+  margin: 0 !important;
+  opacity: 0;
+  transform: scale(1.018);
+  animation-name: hero-clean-slide-v9;
+  animation-duration: 12s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  will-change: opacity, transform;
+}
+
+.hero-slide--one {
+  animation-delay: 0s;
+  opacity: 1;
+}
+
+.hero-slide--two {
+  animation-delay: 4s;
+}
+
+.hero-slide--three {
+  animation-delay: 8s;
+}
+
+.hero-slide img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  filter: saturate(0.98) contrast(0.98) brightness(0.96) !important;
+}
+
+/* One dark/readability layer at the bottom of the photo. */
+.hero-photo-signature {
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  min-height: 43%;
+  display: grid !important;
+  justify-items: center;
+  align-content: end;
+  padding: 0 12px clamp(22px, 6vw, 42px);
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 31, 25, 0) 0%,
+      rgba(18, 31, 25, 0.14) 22%,
+      rgba(18, 31, 25, 0.54) 100%
+    );
+}
+
+/* Floral ornament: behind the text, in the lower photo zone. */
+.hero-photo-signature__ornament {
+  position: absolute !important;
+  left: 50%;
+  bottom: clamp(58px, 15vw, 108px);
+  z-index: 1;
+  width: min(132%, 820px) !important;
+  max-width: none !important;
+  height: auto !important;
+  transform: translateX(-50%);
+  opacity: 0.88;
+  filter:
+    drop-shadow(0 12px 24px rgba(20, 31, 26, 0.26))
+    drop-shadow(0 1px 2px rgba(255, 248, 237, 0.25));
+  user-select: none;
+}
+
+.hero-photo-signature__date {
+  position: relative;
+  z-index: 3;
+  margin: 0 0 clamp(4px, 1.4vw, 8px) !important;
+  display: inline-flex;
+  padding: 6px 13px;
+  border: 1px solid rgba(255, 248, 237, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 248, 237, 0.20);
+  color: rgba(255, 248, 237, 0.92);
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(0.74rem, 2.8vw, 0.9rem) !important;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-shadow: 0 7px 18px rgba(18, 31, 25, 0.38);
+  backdrop-filter: blur(6px);
+}
+
+.hero-photo-signature__names {
+  position: relative;
+  z-index: 4;
+  margin: 0 !important;
+  width: min(96%, 620px);
+  color: #fff8ed !important;
+  font-family: "Kola Calligraphy", "Segoe Script", "Apple Chancery", cursive !important;
+  font-size: clamp(72px, 19vw, 144px) !important;
+  font-weight: 400 !important;
+  line-height: 0.72 !important;
+  letter-spacing: 0 !important;
+  text-align: center;
+  text-shadow:
+    0 2px 2px rgba(52, 33, 29, 0.56),
+    0 13px 32px rgba(18, 31, 25, 0.56),
+    0 0 20px rgba(70, 44, 36, 0.22) !important;
+}
+
+.hero-photo-signature__names span {
+  font: inherit !important;
+}
+
+.hero-slideshow-section .scroll-cue {
+  position: relative !important;
+  left: auto !important;
+  bottom: auto !important;
+  z-index: 2 !important;
+  display: block !important;
+  width: max-content !important;
+  margin: 16px auto 0 !important;
+  color: rgba(68, 51, 43, 0.58) !important;
+  font-size: 0.86rem !important;
+  text-decoration: none !important;
+  text-shadow: none !important;
+}
+
+/* Hard cleanup: old hero decoration classes must not appear if stale markup survives. */
+.hero-slideshow-section .hero-slideshow-copy,
+.hero-slideshow-section .hero-floral-stage,
+.hero-slideshow-section .hero-floral,
+.hero-slideshow-section .hero-flower,
+.hero-slideshow-section .hero-leaf,
+.hero-slideshow-section .kola-hero-old-bottom-v8,
+.hero-slideshow-section .hero-floral-ornament-svg {
+  display: none !important;
+}
+
+@keyframes hero-clean-slide-v9 {
+  0% {
+    opacity: 0;
+    transform: scale(1.028);
+    z-index: 1;
+  }
+
+  3% {
+    opacity: 1;
+    transform: scale(1.018);
+    z-index: 3;
+  }
+
+  29% {
+    opacity: 1;
+    transform: scale(1.004);
+    z-index: 3;
+  }
+
+  36% {
+    opacity: 0;
+    transform: scale(1);
+    z-index: 2;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-clean-card,
+  .hero-clean-slideshow {
+    border-radius: 30px !important;
+  }
+
+  .hero-photo-signature {
+    min-height: 45%;
+    padding-bottom: 24px;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: 74px;
+    width: 142% !important;
+    opacity: 0.86;
+  }
+
+  .hero-photo-signature__names {
+    font-size: clamp(66px, 18.5vw, 92px) !important;
+  }
+}
+
+@media (min-width: 720px) {
+  .hero-clean-card,
+  .hero-clean-slideshow {
+    border-radius: 40px !important;
+  }
+
+  .hero-photo-signature {
+    min-height: 40%;
+    padding-bottom: 40px;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: 112px;
+    width: min(118%, 860px) !important;
+  }
+
+  .hero-photo-signature__names {
+    font-size: clamp(98px, 10vw, 148px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none !important;
+    opacity: 0 !important;
+    transform: none !important;
+  }
+
+  .hero-slide--one {
+    opacity: 1 !important;
+  }
+}
+/* === KOLA CLEAN HERO V9 END === */
+
+/* === KOLA HERO BACKGROUND COMPOSITION V10 START === */
+/*
+  Goal:
+  - photo is the background of the top hero block only;
+  - no separate rectangular photo-card feeling;
+  - names are above the ornament;
+  - ornament sits at the bottom and works as a transition into the paper page;
+  - date is more visible.
+*/
+
+/* Full top scene, not a card. */
+.hero-slideshow-section {
+  min-height: 100svh !important;
+  margin-bottom: 34px !important;
+  padding: 18px 0 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+/* On phones the hero photo becomes a full-bleed top background. */
+@media (max-width: 719px) {
+  .hero-slideshow-section {
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+  }
+}
+
+/* Remove visible “card rectangle”: no border, no shadow, no rounded photo box. */
+.hero-clean-card {
+  overflow: visible !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.hero-clean-slideshow {
+  height: min(86svh, 760px) !important;
+  min-height: 620px !important;
+  aspect-ratio: auto !important;
+  border-radius: 0 !important;
+  background: #24382f !important;
+  box-shadow: none !important;
+}
+
+/* Photo is background of hero block. */
+.hero-slide img {
+  object-fit: cover !important;
+  object-position: center center !important;
+  filter: saturate(0.98) contrast(0.98) brightness(0.98) !important;
+}
+
+/* Soft transition from photo into paper, without a hard rectangle. */
+.hero-clean-slideshow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 18;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(246, 239, 228, 0) 0%,
+      rgba(246, 239, 228, 0) 54%,
+      rgba(246, 239, 228, 0.22) 72%,
+      rgba(246, 239, 228, 0.82) 93%,
+      #f6efe4 100%
+    );
+}
+
+/* Signature layer: transparent container, no dark panel. */
+.hero-photo-signature {
+  z-index: 25 !important;
+  min-height: 54% !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+}
+
+/* Ornament is moved DOWN. It connects photo and next paper area. */
+.hero-photo-signature__ornament {
+  left: 50% !important;
+  bottom: clamp(-46px, -7vw, -24px) !important;
+  z-index: 2 !important;
+  width: min(138%, 860px) !important;
+  opacity: 0.92 !important;
+  filter:
+    drop-shadow(0 16px 30px rgba(20, 31, 26, 0.22))
+    drop-shadow(0 2px 2px rgba(255, 248, 237, 0.32)) !important;
+}
+
+/* Date: stronger, clearer, separated from the flowers. */
+.hero-photo-signature__date {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: clamp(258px, 66vw, 390px) !important;
+  transform: translateX(-50%) !important;
+  z-index: 7 !important;
+  margin: 0 !important;
+
+  padding: 8px 18px !important;
+  border: 1px solid rgba(255, 248, 237, 0.72) !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 237, 0.92), rgba(255, 248, 237, 0.72)) !important;
+  color: #4b302a !important;
+
+  font-size: clamp(0.86rem, 3.1vw, 1.02rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.09em !important;
+  box-shadow:
+    0 12px 30px rgba(23, 34, 28, 0.22),
+    inset 0 1px 0 rgba(255,255,255,.72) !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Names are now ABOVE the ornament. */
+.hero-photo-signature__names {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: clamp(118px, 31vw, 218px) !important;
+  transform: translateX(-50%) !important;
+  z-index: 6 !important;
+
+  width: min(96%, 620px) !important;
+  margin: 0 !important;
+  color: #fff8ed !important;
+
+  font-family: "Kola Calligraphy", "Segoe Script", "Apple Chancery", cursive !important;
+  font-size: clamp(76px, 19vw, 148px) !important;
+  font-weight: 400 !important;
+  line-height: 0.72 !important;
+  text-align: center !important;
+
+  text-shadow:
+    0 2px 2px rgba(52, 33, 29, 0.62),
+    0 14px 34px rgba(18, 31, 25, 0.58),
+    0 0 24px rgba(70, 44, 36, 0.26) !important;
+}
+
+/* Top pill stays over the photo, but still light. */
+.hero-slideshow-section .hero__topline {
+  position: absolute !important;
+  top: 18px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  z-index: 40 !important;
+  margin: 0 !important;
+  background: rgba(255, 248, 237, 0.82) !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Scroll cue after the photo scene, on paper. */
+.hero-slideshow-section .scroll-cue {
+  position: relative !important;
+  z-index: 30 !important;
+  margin: 16px auto 0 !important;
+  color: rgba(68, 51, 43, 0.54) !important;
+}
+
+/* Small phones: keep all text in safe lower area. */
+@media (max-width: 430px) {
+  .hero-clean-slideshow {
+    height: 84svh !important;
+    min-height: 600px !important;
+  }
+
+  .hero-photo-signature__date {
+    bottom: clamp(248px, 68vw, 310px) !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: clamp(112px, 31vw, 150px) !important;
+    font-size: clamp(72px, 18.8vw, 94px) !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -34px !important;
+    width: 146% !important;
+  }
+}
+
+/* Desktop/tablet: keep it elegant, not huge edge-to-edge. */
+@media (min-width: 720px) {
+  .hero-slideshow-section {
+    min-height: auto !important;
+  }
+
+  .hero-clean-card {
+    overflow: hidden !important;
+    border-radius: 40px !important;
+  }
+
+  .hero-clean-slideshow {
+    height: min(82svh, 820px) !important;
+    min-height: 680px !important;
+    border-radius: 40px !important;
+  }
+
+  .hero-photo-signature__date {
+    bottom: clamp(330px, 34vw, 430px) !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: clamp(178px, 18vw, 242px) !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -34px !important;
+    width: min(120%, 900px) !important;
+  }
+}
+/* === KOLA HERO BACKGROUND COMPOSITION V10 END === */
+
+/* === KOLA HERO LAYER TUNE V11 START === */
+/*
+  Fine tune after V10:
+  - ornament goes lower and overlaps the transition into the paper area;
+  - names move higher and only slightly touch the ornament;
+  - date becomes larger and more visible;
+  - photo remains background of the top hero only.
+*/
+
+.hero-clean-card,
+.hero-clean-slideshow,
+.hero-photo-signature {
+  overflow: visible !important;
+}
+
+/* Keep the actual photo slides clipped to the top hero area. */
+.hero-slide {
+  overflow: hidden !important;
+}
+
+.hero-clean-slideshow {
+  margin-bottom: clamp(34px, 10vw, 72px) !important;
+}
+
+/* Ornament lower: it should close the photo edge and spill into the next paper area. */
+.hero-photo-signature__ornament {
+  bottom: clamp(-112px, -22vw, -72px) !important;
+  width: min(152%, 920px) !important;
+  z-index: 3 !important;
+  opacity: 0.94 !important;
+  filter:
+    drop-shadow(0 18px 34px rgba(20, 31, 26, 0.24))
+    drop-shadow(0 2px 2px rgba(255, 248, 237, 0.34)) !important;
+}
+
+/* Names higher: readable over photo, only slightly touching the ornament. */
+.hero-photo-signature__names {
+  bottom: clamp(154px, 40vw, 236px) !important;
+  z-index: 7 !important;
+  color: #fff8ed !important;
+  text-shadow:
+    0 2px 2px rgba(52, 33, 29, 0.68),
+    0 14px 34px rgba(18, 31, 25, 0.64),
+    0 0 26px rgba(70, 44, 36, 0.30) !important;
+}
+
+/* Date stronger: bigger, warmer, clearly visible, allowed to sit close to the floral layer. */
+.hero-photo-signature__date {
+  bottom: clamp(304px, 76vw, 438px) !important;
+  z-index: 8 !important;
+
+  padding: 10px 24px !important;
+  border: 1px solid rgba(255, 248, 237, 0.86) !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 237, 0.98), rgba(238, 224, 202, 0.90)) !important;
+  color: #4b302a !important;
+
+  font-size: clamp(1.02rem, 4vw, 1.32rem) !important;
+  font-weight: 950 !important;
+  letter-spacing: 0.08em !important;
+
+  box-shadow:
+    0 16px 36px rgba(23, 34, 28, 0.28),
+    0 2px 0 rgba(255, 255, 255, 0.58) inset !important;
+  text-shadow: none !important;
+  backdrop-filter: blur(10px);
+}
+
+/* Softer bottom fade so the photo does not end as a hard rectangle. */
+.hero-clean-slideshow::after {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(246, 239, 228, 0) 0%,
+      rgba(246, 239, 228, 0) 50%,
+      rgba(246, 239, 228, 0.16) 68%,
+      rgba(246, 239, 228, 0.62) 90%,
+      #f6efe4 100%
+    ) !important;
+}
+
+/* Small phones: compact but still layered correctly. */
+@media (max-width: 430px) {
+  .hero-clean-slideshow {
+    margin-bottom: 58px !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -96px !important;
+    width: 158% !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 158px !important;
+    font-size: clamp(72px, 18.8vw, 94px) !important;
+  }
+
+  .hero-photo-signature__date {
+    bottom: 318px !important;
+    font-size: clamp(1rem, 4.1vw, 1.2rem) !important;
+    padding: 10px 22px !important;
+  }
+}
+
+/* Very narrow phones. */
+@media (max-width: 370px) {
+  .hero-photo-signature__ornament {
+    bottom: -88px !important;
+    width: 164% !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 150px !important;
+    font-size: 70px !important;
+  }
+
+  .hero-photo-signature__date {
+    bottom: 302px !important;
+    font-size: 1rem !important;
+  }
+}
+
+/* Tablet/desktop: keep composition elegant inside the centered invite area. */
+@media (min-width: 720px) {
+  .hero-clean-card {
+    overflow: visible !important;
+  }
+
+  .hero-clean-slideshow {
+    overflow: visible !important;
+    margin-bottom: 78px !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -94px !important;
+    width: min(128%, 940px) !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: clamp(230px, 24vw, 310px) !important;
+  }
+
+  .hero-photo-signature__date {
+    bottom: clamp(420px, 42vw, 520px) !important;
+  }
+}
+/* === KOLA HERO LAYER TUNE V11 END === */
+
+/* === KOLA HERO TOP LABELS V12 START === */
+/*
+  Top hero labels:
+  - left top: “Приглашение на свадьбу” directly on photo;
+  - right top: date directly on photo;
+  - no pills, no glass layer, no extra background;
+  - lower floral/name composition stays.
+*/
+
+/* The signature layer must cover the full photo so date can sit in the real top-right corner. */
+.hero-photo-signature {
+  inset: 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  padding: 0 !important;
+  display: block !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+/* Left top text directly on the photo. */
+.hero-slideshow-section .hero__topline {
+  position: absolute !important;
+  top: clamp(18px, 5vw, 34px) !important;
+  left: clamp(18px, 5vw, 34px) !important;
+  right: auto !important;
+  transform: none !important;
+  z-index: 50 !important;
+
+  width: auto !important;
+  max-width: 48% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  color: rgba(255, 248, 237, 0.96) !important;
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(0.72rem, 2.7vw, 0.95rem) !important;
+  font-weight: 850 !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.13em !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+
+  text-shadow:
+    0 2px 3px rgba(20, 31, 25, 0.62),
+    0 10px 24px rgba(20, 31, 25, 0.36) !important;
+}
+
+/* Date directly on the photo, top-right. */
+.hero-photo-signature__date {
+  position: absolute !important;
+  top: clamp(18px, 5vw, 34px) !important;
+  right: clamp(18px, 5vw, 34px) !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: 51 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  color: rgba(255, 248, 237, 0.98) !important;
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(1rem, 4.2vw, 1.34rem) !important;
+  font-weight: 950 !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0.08em !important;
+  text-align: right !important;
+
+  text-shadow:
+    0 2px 3px rgba(20, 31, 25, 0.68),
+    0 10px 24px rgba(20, 31, 25, 0.42) !important;
+}
+
+/* Keep names and ornament in the lower composition. */
+.hero-photo-signature__names {
+  bottom: clamp(154px, 40vw, 236px) !important;
+  z-index: 7 !important;
+}
+
+.hero-photo-signature__ornament {
+  bottom: clamp(-112px, -22vw, -72px) !important;
+  z-index: 3 !important;
+}
+
+/* Add a very light top readability fade, not a visible layer. */
+.hero-clean-slideshow::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 26%;
+  z-index: 17;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 31, 25, 0.26) 0%,
+    rgba(18, 31, 25, 0.10) 48%,
+    rgba(18, 31, 25, 0) 100%
+  );
+}
+
+/* On very narrow phones, avoid collision between left label and right date. */
+@media (max-width: 390px) {
+  .hero-slideshow-section .hero__topline {
+    max-width: 44% !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.11em !important;
+  }
+
+  .hero-photo-signature__date {
+    font-size: 0.98rem !important;
+    letter-spacing: 0.06em !important;
+  }
+}
+
+@media (min-width: 720px) {
+  .hero-slideshow-section .hero__topline {
+    top: 30px !important;
+    left: 34px !important;
+    font-size: 0.88rem !important;
+  }
+
+  .hero-photo-signature__date {
+    top: 30px !important;
+    right: 34px !important;
+    font-size: 1.22rem !important;
+  }
+}
+/* === KOLA HERO TOP LABELS V12 END === */
+
+/* === KOLA HERO TOP ALIGN V13 START === */
+/*
+  Top hero labels alignment:
+  - same top level;
+  - same font size;
+  - same line-height;
+  - no pill/background;
+  - directly on photo.
+*/
+
+.hero-slideshow-section .hero__topline,
+.hero-photo-signature__date {
+  top: clamp(22px, 4.8vw, 34px) !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  color: rgba(255, 248, 237, 0.96) !important;
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(0.76rem, 2.45vw, 0.92rem) !important;
+  font-weight: 850 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.12em !important;
+
+  text-shadow:
+    0 2px 3px rgba(20, 31, 25, 0.68),
+    0 10px 24px rgba(20, 31, 25, 0.40) !important;
+}
+
+.hero-slideshow-section .hero__topline {
+  position: absolute !important;
+  left: clamp(18px, 5vw, 34px) !important;
+  right: auto !important;
+  transform: none !important;
+  z-index: 50 !important;
+
+  width: auto !important;
+  max-width: 52% !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+}
+
+.hero-photo-signature__date {
+  position: absolute !important;
+  right: clamp(18px, 5vw, 34px) !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  z-index: 51 !important;
+
+  width: auto !important;
+  max-width: 42% !important;
+  text-align: right !important;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Narrow phones: keep both captions compact and on one visual line. */
+@media (max-width: 390px) {
+  .hero-slideshow-section .hero__topline,
+  .hero-photo-signature__date {
+    top: 22px !important;
+    font-size: 0.72rem !important;
+    letter-spacing: 0.105em !important;
+  }
+
+  .hero-slideshow-section .hero__topline {
+    max-width: 50% !important;
+  }
+
+  .hero-photo-signature__date {
+    max-width: 44% !important;
+  }
+}
+
+/* Desktop/tablet: same baseline, a little more air from edges. */
+@media (min-width: 720px) {
+  .hero-slideshow-section .hero__topline,
+  .hero-photo-signature__date {
+    top: 30px !important;
+    font-size: 0.88rem !important;
+    line-height: 1 !important;
+  }
+
+  .hero-slideshow-section .hero__topline {
+    left: 34px !important;
+  }
+
+  .hero-photo-signature__date {
+    right: 34px !important;
+  }
+}
+/* === KOLA HERO TOP ALIGN V13 END === */
+
+/* === KOLA HERO TOP ROW V14 START === */
+/*
+  Fix top labels for real symmetry:
+  - both labels are now inside .hero-clean-slideshow;
+  - both are positioned from the same photo container;
+  - same top, same font-size, same line-height;
+  - no pills, no backgrounds.
+*/
+
+.hero-clean-slideshow {
+  --kola-hero-top-row-y: clamp(22px, 5vw, 34px);
+  --kola-hero-top-row-x: clamp(18px, 5vw, 34px);
+  position: relative !important;
+}
+
+/* Shared visual system for both top labels. */
+.hero-clean-slideshow > .hero__topline,
+.hero-clean-slideshow .hero-photo-signature__date {
+  position: absolute !important;
+  top: var(--kola-hero-top-row-y) !important;
+  bottom: auto !important;
+  z-index: 60 !important;
+
+  display: block !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+
+  color: rgba(255, 248, 237, 0.97) !important;
+  font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size: clamp(0.78rem, 2.55vw, 0.94rem) !important;
+  font-weight: 850 !important;
+  line-height: 1 !important;
+  letter-spacing: 0.115em !important;
+
+  text-shadow:
+    0 2px 3px rgba(20, 31, 25, 0.72),
+    0 10px 24px rgba(20, 31, 25, 0.42) !important;
+}
+
+/* Left label. */
+.hero-clean-slideshow > .hero__topline {
+  left: var(--kola-hero-top-row-x) !important;
+  right: auto !important;
+  transform: none !important;
+  max-width: 54% !important;
+  text-align: left !important;
+  text-transform: uppercase !important;
+}
+
+/* Right date. */
+.hero-clean-slideshow .hero-photo-signature__date {
+  right: var(--kola-hero-top-row-x) !important;
+  left: auto !important;
+  transform: none !important;
+  max-width: 42% !important;
+  text-align: right !important;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Old section-level rules must not move the topline anymore. */
+.hero-slideshow-section .hero__topline {
+  top: var(--kola-hero-top-row-y) !important;
+  left: var(--kola-hero-top-row-x) !important;
+  right: auto !important;
+  margin: 0 !important;
+}
+
+/* Very narrow phones: keep both labels on one row without collision. */
+@media (max-width: 390px) {
+  .hero-clean-slideshow {
+    --kola-hero-top-row-y: 22px;
+    --kola-hero-top-row-x: 18px;
+  }
+
+  .hero-clean-slideshow > .hero__topline,
+  .hero-clean-slideshow .hero-photo-signature__date {
+    font-size: 0.72rem !important;
+    letter-spacing: 0.095em !important;
+  }
+
+  .hero-clean-slideshow > .hero__topline {
+    max-width: 50% !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date {
+    max-width: 44% !important;
+  }
+}
+
+@media (min-width: 720px) {
+  .hero-clean-slideshow {
+    --kola-hero-top-row-y: 30px;
+    --kola-hero-top-row-x: 34px;
+  }
+
+  .hero-clean-slideshow > .hero__topline,
+  .hero-clean-slideshow .hero-photo-signature__date {
+    font-size: 0.88rem !important;
+  }
+}
+/* === KOLA HERO TOP ROW V14 END === */
+
+/* === KOLA HERO OVERFLOW AND ORNAMENT V15 START === */
+/*
+  Fixes:
+  - prevent mobile loader/right-side clipping caused by horizontal overflow;
+  - reduce floral SVG width on desktop and mobile;
+  - remove top paper strip above hero photo;
+  - keep photo as top hero background only.
+*/
+
+/* Global safety: no horizontal page expansion from large decorative layers. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip !important;
+  }
+}
+
+/* Loader must always fit the real mobile viewport. */
+.kola-loader,
+.invite-loader {
+  left: 0 !important;
+  right: 0 !important;
+  width: 100dvw !important;
+  max-width: 100dvw !important;
+  overflow: hidden !important;
+}
+
+.invite-loader-scene {
+  width: min(calc(100dvw - 24px), 470px) !important;
+  max-width: calc(100dvw - 24px) !important;
+  margin-inline: auto !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 430px) {
+  .invite-loader-scene {
+    width: calc(100dvw - 18px) !important;
+    max-width: calc(100dvw - 18px) !important;
+  }
+
+  .invite-envelope-wrap {
+    width: min(calc(100dvw - 46px), 335px) !important;
+  }
+
+  .invite-photo-card {
+    width: min(calc(100dvw - 70px), 294px) !important;
+  }
+}
+
+/* Remove the paper strip above the hero. */
+.page {
+  padding-top: 0 !important;
+}
+
+.hero-slideshow-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* The photo should start from the top of the hero block. */
+.hero-clean-card,
+.hero-clean-slideshow {
+  margin-top: 0 !important;
+}
+
+/* Keep the top labels inside the photo with enough breathing room. */
+.hero-clean-slideshow {
+  --kola-hero-top-row-y: clamp(22px, 5vw, 34px);
+  --kola-hero-top-row-x: clamp(18px, 5vw, 34px);
+}
+
+/* Floral ornament: smaller and controlled.
+   It may slightly leave the photo sides, but must not create horizontal scroll. */
+.hero-photo-signature__ornament {
+  bottom: clamp(-96px, -18vw, -68px) !important;
+  width: min(122%, 820px) !important;
+  max-width: none !important;
+  z-index: 3 !important;
+  opacity: 0.93 !important;
+  transform: translateX(-50%) !important;
+}
+
+/* Names stay readable above the ornament. */
+.hero-photo-signature__names {
+  bottom: clamp(150px, 39vw, 226px) !important;
+  z-index: 7 !important;
+}
+
+/* Date remains top-right after V14. */
+.hero-clean-slideshow .hero-photo-signature__date {
+  top: var(--kola-hero-top-row-y) !important;
+  right: var(--kola-hero-top-row-x) !important;
+  bottom: auto !important;
+}
+
+/* Left label remains top-left after V14. */
+.hero-clean-slideshow > .hero__topline {
+  top: var(--kola-hero-top-row-y) !important;
+  left: var(--kola-hero-top-row-x) !important;
+}
+
+/* Mobile: ornament smaller than before, no side overflow problem. */
+@media (max-width: 430px) {
+  .hero-photo-signature__ornament {
+    width: 126% !important;
+    bottom: -86px !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 150px !important;
+  }
+}
+
+/* Very narrow phones. */
+@media (max-width: 370px) {
+  .hero-photo-signature__ornament {
+    width: 130% !important;
+    bottom: -80px !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 144px !important;
+  }
+}
+
+/* Desktop/tablet: ornament almost to photo edges, only slight overflow. */
+@media (min-width: 720px) {
+  .page {
+    padding-top: 0 !important;
+  }
+
+  .hero-clean-card {
+    overflow: visible !important;
+  }
+
+  .hero-clean-slideshow {
+    overflow: visible !important;
+    margin-bottom: 66px !important;
+  }
+
+  .hero-photo-signature__ornament {
+    width: min(108%, 820px) !important;
+    bottom: -72px !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: clamp(218px, 23vw, 292px) !important;
+  }
+}
+/* === KOLA HERO OVERFLOW AND ORNAMENT V15 END === */
+
