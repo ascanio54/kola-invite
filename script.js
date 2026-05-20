@@ -484,3 +484,117 @@ toneButtons.forEach((button) => {
 })();
 // End Kola local fix: GSAP invite loader v1
 
+/* === KOLA HERO SLIDESHOW START AFTER LOADER V33 START === */
+/*
+  Starts hero slideshow only after the invite loader is gone.
+  This prevents the first hero slideshow from running invisibly behind the loader.
+*/
+(() => {
+  const readyClass = "hero-slideshow-ready";
+  const body = document.body;
+
+  if (!body) return;
+
+  body.classList.remove(readyClass);
+
+  let started = false;
+
+  const startHeroSlideshow = () => {
+    if (started) return;
+    started = true;
+
+    /*
+      Restart CSS animations from the beginning:
+      1) ensure class is absent;
+      2) force reflow;
+      3) add class on next animation frame.
+    */
+    body.classList.remove(readyClass);
+
+    const hero = document.querySelector(".hero-clean-slideshow");
+    if (hero) {
+      void hero.offsetWidth;
+    }
+
+    requestAnimationFrame(() => {
+      body.classList.add(readyClass);
+    });
+  };
+
+  const getLoader = () =>
+    document.querySelector(".kola-loader, .invite-loader");
+
+  const isLoaderHidden = (loader) => {
+    if (!loader) return true;
+
+    const styles = window.getComputedStyle(loader);
+
+    return (
+      loader.classList.contains("is-hidden") ||
+      styles.display === "none" ||
+      styles.visibility === "hidden" ||
+      Number(styles.opacity) <= 0.01
+    );
+  };
+
+  const arm = () => {
+    const loader = getLoader();
+
+    if (!loader) {
+      startHeroSlideshow();
+      return;
+    }
+
+    if (isLoaderHidden(loader)) {
+      setTimeout(startHeroSlideshow, 80);
+      return;
+    }
+
+    loader.addEventListener(
+      "transitionend",
+      (event) => {
+        if (
+          event.propertyName === "opacity" ||
+          event.propertyName === "visibility"
+        ) {
+          setTimeout(startHeroSlideshow, 80);
+        }
+      },
+      { once: true },
+    );
+
+    const observer = new MutationObserver(() => {
+      if (isLoaderHidden(loader)) {
+        observer.disconnect();
+        setTimeout(startHeroSlideshow, 80);
+      }
+    });
+
+    observer.observe(loader, {
+      attributes: true,
+      attributeFilter: ["class", "style"],
+    });
+
+    /*
+      Safety fallbacks:
+      - normal CSS loader cycle is ~6.4s;
+      - emergency hide is ~8.2s in CSS;
+      - this guarantees slideshow eventually starts even if transitionend is missed.
+    */
+    setTimeout(() => {
+      if (isLoaderHidden(loader) || !body.classList.contains("loader-active")) {
+        startHeroSlideshow();
+      }
+    }, 6900);
+
+    setTimeout(startHeroSlideshow, 8600);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", arm, { once: true });
+  } else {
+    arm();
+  }
+})();
+/* === KOLA HERO SLIDESHOW START AFTER LOADER V33 END === */
+

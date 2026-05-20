@@ -9026,3 +9026,445 @@ legend,
 }
 /* === KOLA FINAL HERO NOTE V29 END === */
 
+/* === KOLA HERO FULLBLEED FONT V30 START === */
+/*
+  Final polish:
+  - remove sandy side strips in hero by expanding the photo block through page padding;
+  - force new sans font as a new family name, so Vercel/browser do not reuse old Kola Sans;
+  - make “Оля и Костя” a little larger.
+*/
+
+/* New unique font family to avoid collision with old @font-face "Kola Sans". */
+@font-face {
+  font-family: "Kola Sans 2";
+  src: url("./assets/fonts/kola-sans-2.ttf?v=30") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-base: "Kola Sans 2", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Kola Sans 2", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-calligraphy: "Kola Calligraphy", "Segoe Script", "Apple Chancery", cursive;
+}
+
+/* Force readable UI/text to the new sans. */
+body,
+button,
+input,
+textarea,
+select,
+label,
+legend,
+p,
+a,
+span,
+small,
+.button,
+.invite-note,
+.invite-note__title,
+.invite-note__text,
+.hero-photo-signature__date,
+.scroll-cue,
+.program-time,
+.calendar-card,
+.calendar-note,
+.venue-card__body,
+.dress-chip,
+.dress-clean__styles,
+.detail-elegant-content,
+.rsvp-form {
+  font-family: var(--font-base) !important;
+}
+
+/* Keep calligraphy only for decorative headings/names. */
+.hero-photo-signature__names,
+.invite-card-title,
+.invite-card-names,
+.date-block h2,
+.program-block h2,
+.places-block h2,
+.dress-block h2,
+.details-block h2,
+.closing-block h2 {
+  font-family: var(--font-calligraphy) !important;
+}
+
+/* Hero: fill the page padding so no sandy strips appear at the sides. */
+.hero-slideshow-section {
+  width: calc(100% + 32px) !important;
+  max-width: none !important;
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.hero-clean-card,
+.hero-clean-slideshow {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.hero-clean-slideshow {
+  overflow: hidden !important;
+}
+
+.hero-slide,
+.hero-slide img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hero-slide img {
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+
+/* Names: slightly larger, same unified composition. */
+.hero-photo-signature__names {
+  bottom: 28.6% !important;
+  font-size: clamp(84px, 20.6cqw, 108px) !important;
+  line-height: 0.72 !important;
+  z-index: 9 !important;
+}
+
+/* Subtitle remains below names, same device-independent position. */
+.hero-clean-slideshow .hero-photo-signature__date,
+.hero-photo-signature__date {
+  bottom: 21.1% !important;
+  font-family: var(--font-base) !important;
+}
+
+/* Keep ornament controlled after full-bleed widening. */
+.hero-photo-signature__ornament {
+  width: min(112%, 820px) !important;
+  bottom: -8.5% !important;
+}
+
+/* Repeat inside old media blocks so previous desktop/mobile overrides cannot split the design. */
+@media (min-width: 720px) {
+  .hero-slideshow-section {
+    width: calc(100% + 32px) !important;
+    max-width: none !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+  }
+
+  .hero-clean-card,
+  .hero-clean-slideshow {
+    max-width: none !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 28.6% !important;
+    font-size: clamp(84px, 20.6cqw, 108px) !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date,
+  .hero-photo-signature__date {
+    bottom: 21.1% !important;
+  }
+
+  .hero-photo-signature__ornament {
+    width: min(112%, 820px) !important;
+    bottom: -8.5% !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-slideshow-section {
+    width: calc(100% + 32px) !important;
+    max-width: none !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+  }
+
+  .hero-clean-card,
+  .hero-clean-slideshow {
+    max-width: none !important;
+  }
+
+  .hero-photo-signature__names {
+    bottom: 28.6% !important;
+    font-size: clamp(84px, 20.6cqw, 108px) !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date,
+  .hero-photo-signature__date {
+    bottom: 21.1% !important;
+  }
+
+  .hero-photo-signature__ornament {
+    width: min(112%, 820px) !important;
+    bottom: -8.5% !important;
+  }
+}
+/* === KOLA HERO FULLBLEED FONT V30 END === */
+
+/* === KOLA HERO START AFTER LOADER V33 START === */
+/*
+  Hero slideshow sync:
+  - slideshow is fully stopped while loader is visible;
+  - after loader closes, hero starts from photo 1;
+  - cycle is slower: 18s total, about 6s per photo;
+  - transition 3 -> 1 is smoother through negative first-slide offset;
+  - photo motion is Ken Burns-like, not frame pulse.
+*/
+
+:root {
+  --hero-slide-cycle-v33: 18s;
+  --hero-slide-step-v33: 6s;
+  --hero-slide-crossfade-v33: 900ms;
+}
+
+/* During loader / before JS unlocks slideshow: keep only first photo visible. */
+body:not(.hero-slideshow-ready) .hero-slide {
+  animation: none !important;
+  opacity: 0 !important;
+  z-index: 1 !important;
+  transform: none !important;
+}
+
+body:not(.hero-slideshow-ready) .hero-slide--one {
+  opacity: 1 !important;
+  z-index: 3 !important;
+}
+
+body:not(.hero-slideshow-ready) .hero-slide img {
+  animation: none !important;
+  transform: scale(1.018) translate3d(0, 0, 0) !important;
+}
+
+/* No pseudo-frame: it caused the horizontal artifact. */
+.hero-clean-slideshow::before {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: none !important;
+}
+
+/* Hero container can let the ornament breathe. */
+.hero-clean-card,
+.hero-clean-slideshow {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* Actual photo frame remains clipped by each slide. */
+.hero-slide {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  will-change: opacity;
+}
+
+/* Slideshow starts only after body.hero-slideshow-ready appears. */
+body.hero-slideshow-ready .hero-slide {
+  opacity: 0;
+  transform: none !important;
+  animation-name: hero-slide-fade-v33 !important;
+  animation-duration: var(--hero-slide-cycle-v33) !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-fill-mode: both !important;
+}
+
+/*
+  Negative delay on slide 1 means:
+  - after loader, first photo is already visible;
+  - near the loop end, photo 1 begins fading in before photo 3 fully disappears.
+*/
+body.hero-slideshow-ready .hero-slide--one {
+  animation-delay: -0.9s !important;
+}
+
+body.hero-slideshow-ready .hero-slide--two {
+  animation-delay: 5.1s !important;
+}
+
+body.hero-slideshow-ready .hero-slide--three {
+  animation-delay: 11.1s !important;
+}
+
+.hero-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  transform-origin: center center !important;
+  will-change: transform;
+  filter: saturate(0.98) contrast(0.98) brightness(0.96) !important;
+}
+
+/* Ken Burns only after loader unlocks the slideshow. */
+body.hero-slideshow-ready .hero-slide img {
+  animation-duration: var(--hero-slide-cycle-v33) !important;
+  animation-timing-function: ease-in-out !important;
+  animation-iteration-count: infinite !important;
+  animation-fill-mode: both !important;
+}
+
+body.hero-slideshow-ready .hero-slide--one img {
+  animation-name: hero-photo-kenburns-one-v33 !important;
+  animation-delay: -0.9s !important;
+}
+
+body.hero-slideshow-ready .hero-slide--two img {
+  animation-name: hero-photo-kenburns-two-v33 !important;
+  animation-delay: 5.1s !important;
+}
+
+body.hero-slideshow-ready .hero-slide--three img {
+  animation-name: hero-photo-kenburns-three-v33 !important;
+  animation-delay: 11.1s !important;
+}
+
+/* One slide is visible for ~5.5s, then crossfades softly. */
+@keyframes hero-slide-fade-v33 {
+  0% {
+    opacity: 0;
+    z-index: 1;
+  }
+
+  5% {
+    opacity: 1;
+    z-index: 3;
+  }
+
+  30% {
+    opacity: 1;
+    z-index: 3;
+  }
+
+  38% {
+    opacity: 0;
+    z-index: 2;
+  }
+
+  100% {
+    opacity: 0;
+    z-index: 1;
+  }
+}
+
+/* Subtle motion, different direction per photo. */
+@keyframes hero-photo-kenburns-one-v33 {
+  0% {
+    transform: scale(1.055) translate3d(-0.9%, -0.5%, 0);
+  }
+
+  38% {
+    transform: scale(1.018) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.018) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-photo-kenburns-two-v33 {
+  0% {
+    transform: scale(1.05) translate3d(0.8%, -0.4%, 0);
+  }
+
+  38% {
+    transform: scale(1.016) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.016) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-photo-kenburns-three-v33 {
+  0% {
+    transform: scale(1.05) translate3d(-0.6%, 0.6%, 0);
+  }
+
+  38% {
+    transform: scale(1.016) translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: scale(1.016) translate3d(0, 0, 0);
+  }
+}
+
+/* Keep floral layer overlapping the transition. */
+.hero-photo-signature__ornament {
+  z-index: 7 !important;
+  bottom: -10.5% !important;
+  width: min(118%, 860px) !important;
+  max-width: none !important;
+}
+
+/* Text stays above ornament. */
+.hero-photo-signature__names {
+  z-index: 9 !important;
+}
+
+.hero-clean-slideshow .hero-photo-signature__date,
+.hero-photo-signature__date {
+  z-index: 8 !important;
+}
+
+/* Repeat values inside media rules so old overrides cannot split behavior again. */
+@media (min-width: 720px) {
+  .hero-clean-card,
+  .hero-clean-slideshow {
+    overflow: visible !important;
+  }
+
+  .hero-slide {
+    overflow: hidden !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -10.5% !important;
+    width: min(118%, 860px) !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-clean-card,
+  .hero-clean-slideshow {
+    overflow: visible !important;
+  }
+
+  .hero-slide {
+    overflow: hidden !important;
+  }
+
+  .hero-photo-signature__ornament {
+    bottom: -10.5% !important;
+    width: min(118%, 860px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.hero-slideshow-ready .hero-slide,
+  body.hero-slideshow-ready .hero-slide img,
+  body:not(.hero-slideshow-ready) .hero-slide,
+  body:not(.hero-slideshow-ready) .hero-slide img {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .hero-slide {
+    opacity: 0 !important;
+  }
+
+  .hero-slide--one {
+    opacity: 1 !important;
+  }
+}
+/* === KOLA HERO START AFTER LOADER V33 END === */
+
