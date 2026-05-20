@@ -11,3 +11,4 @@ dist-netlify-safe/
 public/
 *.bak*
 *.log
+dist-netlify/
