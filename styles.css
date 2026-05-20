@@ -8397,118 +8397,632 @@ body {
 }
 /* === KOLA HERO RADIUS FIX V16 END === */
 
-/* === KOLA HERO DATE UNDER NAMES V18 START === */
+/* === KOLA FONT SYSTEM V24 START === */
 /*
-  Final hero text layout:
-  - remove top-left invite label;
-  - remove top-right date behavior;
-  - show “19 июня 2026” under “Оля и Костя”;
-  - keep ornament as lower transition.
+  Font system:
+  - decorative calligraphy: assets/fonts/kola-calligraphy.ttf
+  - main sans: assets/fonts/kola-sans-2.ttf
+  - hero date remains snow-white and without background/frame.
 */
 
-/* If any old topline survives from previous patches, hide it. */
-.hero-slideshow-section .hero__topline,
-.hero-clean-slideshow > .hero__topline {
+@font-face {
+  font-family: "Kola Calligraphy";
+  src: url("./assets/fonts/kola-calligraphy.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Kola Sans";
+  src: url("./assets/fonts/kola-sans-2.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-base: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-calligraphy: "Kola Calligraphy", "Segoe Script", "Apple Chancery", cursive;
+}
+
+/* Main readable font. */
+body,
+button,
+input,
+textarea,
+select,
+label,
+legend,
+.button,
+.hero-photo-signature__date,
+.hero__topline,
+.rsvp-form,
+.program-time,
+.calendar-note,
+.dress-chip,
+.venue-card__body,
+.detail-elegant-content {
+  font-family: var(--font-base) !important;
+}
+
+/* Decorative calligraphy font. */
+.hero-photo-signature__names,
+.invite-card-title,
+.invite-card-names,
+.date-block h2,
+.program-block h2,
+.places-block h2,
+.dress-block h2,
+.details-block h2,
+.closing-block h2 {
+  font-family: var(--font-calligraphy) !important;
+  font-weight: 400 !important;
+}
+
+/* Keep hero date clean: white text only, no rectangle/pill/background. */
+.hero-clean-slideshow .hero-photo-signature__date,
+.hero-photo-signature__date {
+  color: #fffaf4 !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
+
+  text-shadow:
+    0 2px 2px rgba(52, 33, 29, 0.58),
+    0 14px 32px rgba(18, 31, 25, 0.46),
+    0 0 18px rgba(255, 248, 237, 0.18) !important;
+}
+
+.hero-clean-slideshow .hero-photo-signature__date::before,
+.hero-clean-slideshow .hero-photo-signature__date::after,
+.hero-photo-signature__date::before,
+.hero-photo-signature__date::after {
+  content: none !important;
   display: none !important;
 }
+/* === KOLA FONT SYSTEM V24 END === */
 
-/* Names stay above the ornament. */
-.hero-photo-signature__names {
-  bottom: clamp(168px, 41vw, 246px) !important;
-  z-index: 8 !important;
+/* === KOLA UNIFIED PAGE V28 START === */
+/*
+  Final unified layout:
+  - loader notification: paper-plane SVG and exactly 2 text lines;
+  - hero subtitle: “Приглашение на свадьбу” instead of date;
+  - hero and all following blocks use one poster/mobile composition;
+  - no separate wide desktop composition below hero.
+*/
+
+/* Loader notification */
+.invite-note {
+  width: min(calc(100% - 18px), 410px) !important;
+  min-height: 58px !important;
+  grid-template-columns: 34px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  padding: 10px 14px !important;
+  border-radius: 23px !important;
 }
 
-/* Date is now under names, not in the top-right corner. */
+.invite-note__icon {
+  width: 34px !important;
+  height: 34px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 13px !important;
+  color: #fffaf4 !important;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255,255,255,.24), transparent 30%),
+    linear-gradient(145deg, #b99684, #885b4d) !important;
+  box-shadow:
+    0 9px 18px rgba(92, 64, 55, 0.22),
+    inset 0 1px 0 rgba(255,255,255,.18) !important;
+  font-size: 0 !important;
+  font-style: normal !important;
+}
+
+.invite-note__plane {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  stroke-width: 0.9 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  transform: translateX(1px) rotate(-4deg);
+}
+
+.invite-note__title {
+  margin: 0 0 3px !important;
+  font-size: 8.6px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.13em !important;
+  white-space: nowrap !important;
+}
+
+.invite-note__text {
+  margin: 0 !important;
+  display: grid !important;
+  gap: 1px !important;
+  color: rgba(59,42,36,.82) !important;
+  font-size: 11.8px !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0 !important;
+}
+
+.invite-note__text span {
+  display: block !important;
+  white-space: nowrap !important;
+}
+
+/* Hero: one poster version */
+.hero-slideshow-section {
+  width: min(100%, 430px) !important;
+  max-width: 430px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 46px !important;
+  padding-top: 0 !important;
+  overflow: visible !important;
+}
+
+.hero-clean-card,
+.hero-clean-slideshow {
+  width: 100% !important;
+  max-width: 430px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.hero-clean-slideshow {
+  height: min(86svh, 760px) !important;
+  min-height: 610px !important;
+  container-type: inline-size;
+}
+
+.hero-photo-signature {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  display: block !important;
+  padding: 0 !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+.hero-photo-signature__names {
+  position: absolute !important;
+  left: 50% !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: 31% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9 !important;
+  width: min(96%, 760px) !important;
+  margin: 0 !important;
+  font-size: clamp(72px, 18cqw, 92px) !important;
+}
+
+/* This class now displays hero subtitle, not a date. */
 .hero-clean-slideshow .hero-photo-signature__date,
 .hero-photo-signature__date {
   position: absolute !important;
   left: 50% !important;
   right: auto !important;
   top: auto !important;
-  bottom: clamp(116px, 29vw, 168px) !important;
+  bottom: 23.2% !important;
   transform: translateX(-50%) !important;
-  z-index: 9 !important;
+  z-index: 8 !important;
 
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
+  width: auto !important;
+  max-width: calc(100% - 32px) !important;
+  height: auto !important;
 
-  width: max-content !important;
-  max-width: calc(100% - 48px) !important;
   margin: 0 !important;
-  padding: 6px 16px !important;
+  padding: 0 !important;
 
-  border: 1px solid rgba(255, 248, 237, 0.52) !important;
-  border-radius: 999px !important;
-  background: rgba(31, 45, 37, 0.22) !important;
-  box-shadow:
-    0 10px 24px rgba(18, 31, 25, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.22) !important;
-  backdrop-filter: blur(6px);
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  filter: none !important;
 
-  color: #fff8ed !important;
+  color: #fffaf4 !important;
   font-family: "Kola Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-  font-size: clamp(0.96rem, 3.6vw, 1.28rem) !important;
+  font-size: clamp(0.82rem, 3.8cqw, 1.08rem) !important;
   font-weight: 900 !important;
-  line-height: 1.05 !important;
-  letter-spacing: 0.06em !important;
+  line-height: 1 !important;
+  letter-spacing: 0.13em !important;
   text-align: center !important;
   white-space: nowrap !important;
-  font-variant-numeric: lining-nums tabular-nums;
+  text-transform: uppercase !important;
 
   text-shadow:
-    0 2px 3px rgba(20, 31, 25, 0.62),
-    0 10px 24px rgba(20, 31, 25, 0.34) !important;
+    0 2px 2px rgba(52, 33, 29, 0.56),
+    0 12px 28px rgba(18, 31, 25, 0.42),
+    0 0 18px rgba(255, 248, 237, 0.16) !important;
 }
 
-/* Ornament remains lower and works as transition. */
+.hero-photo-signature__date::before,
+.hero-photo-signature__date::after {
+  content: none !important;
+  display: none !important;
+}
+
 .hero-photo-signature__ornament {
-  bottom: clamp(-92px, -17vw, -62px) !important;
-  z-index: 3 !important;
+  bottom: -8.5% !important;
+  z-index: 7 !important;
+  width: min(116%, 820px) !important;
 }
 
-/* Mobile tuning. */
-@media (max-width: 430px) {
+/* One width for the whole invite below hero */
+.page {
+  width: min(100%, 430px) !important;
+  max-width: 430px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.page .block:not(.block-hero) {
+  width: 100% !important;
+  max-width: 430px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* All sections below hero: one column, centered content */
+.date-block,
+.program-block,
+.places-block,
+.dress-block,
+.details-block,
+.rsvp-block,
+.closing-block {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 24px !important;
+  text-align: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.section-heading,
+.section-heading h2,
+.section-heading p {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.section-heading p {
+  max-width: 34rem !important;
+}
+
+/* Calendar */
+.calendar-card {
+  width: 100% !important;
+}
+
+/* Program */
+.program-line {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 34px !important;
+}
+
+.program-line::before {
+  display: none !important;
+}
+
+.program-item {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px !important;
+  text-align: center !important;
+}
+
+.program-time {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.program-card {
+  text-align: center !important;
+}
+
+/* Venues */
+.venue-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 18px !important;
+}
+
+.venue-card__body {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.venue-card__body .button {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Dress */
+.dress-clean {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px !important;
+  text-align: center !important;
+}
+
+.dress-clean__palette,
+.dress-clean__styles {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+
+.dress-chip {
+  text-align: left !important;
+}
+
+/* Details */
+.details-elegant {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 18px !important;
+}
+
+.detail-elegant-card,
+.detail-elegant-card--book,
+.detail-elegant-card--flowers {
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+.detail-elegant-content {
+  text-align: center !important;
+}
+
+.detail-elegant-qr {
+  grid-column: auto !important;
+  justify-self: stretch !important;
+}
+
+/* RSVP stays readable: headings centered, fields left-aligned */
+.rsvp-shell {
+  width: 100% !important;
+}
+
+.rsvp-block .section-heading,
+.rsvp-block .section-heading h2,
+.rsvp-block .section-heading p {
+  text-align: center !important;
+}
+
+.rsvp-form,
+.rsvp-form label,
+.rsvp-form legend,
+.rsvp-form input,
+.rsvp-form textarea,
+.rsvp-form .family-block,
+.rsvp-form .radio-card {
+  text-align: left !important;
+}
+
+/* Kill old desktop-specific two-column behavior */
+@media (min-width: 720px) {
+  .page {
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .hero-slideshow-section,
+  .hero-clean-card,
+  .hero-clean-slideshow,
+  .page .block:not(.block-hero) {
+    max-width: 430px !important;
+  }
+
+  .date-block,
+  .program-block,
+  .places-block,
+  .dress-block,
+  .details-block,
+  .rsvp-block,
+  .closing-block,
+  .venue-grid,
+  .dress-clean,
+  .details-elegant {
+    grid-template-columns: 1fr !important;
+  }
+
+  .program-item {
+    grid-template-columns: 1fr !important;
+  }
+
+  .detail-elegant-card--flowers .detail-elegant-qr {
+    grid-column: auto !important;
+  }
+
   .hero-photo-signature__names {
-    bottom: 172px !important;
+    bottom: 31% !important;
+    font-size: clamp(72px, 18cqw, 92px) !important;
   }
 
   .hero-clean-slideshow .hero-photo-signature__date,
   .hero-photo-signature__date {
-    bottom: 124px !important;
-    font-size: 1rem !important;
-    padding: 6px 15px !important;
+    bottom: 23.2% !important;
+    font-size: clamp(0.82rem, 3.8cqw, 1.08rem) !important;
   }
 
   .hero-photo-signature__ornament {
-    bottom: -78px !important;
+    bottom: -8.5% !important;
+    width: min(116%, 820px) !important;
   }
 }
 
-/* Very narrow phones. */
-@media (max-width: 370px) {
-  .hero-photo-signature__names {
-    bottom: 162px !important;
+@media (max-width: 390px) {
+  .invite-note {
+    width: min(calc(100% - 14px), 374px) !important;
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 9px !important;
+    padding: 10px 12px !important;
   }
 
-  .hero-clean-slideshow .hero-photo-signature__date,
-  .hero-photo-signature__date {
-    bottom: 116px !important;
-    font-size: 0.94rem !important;
+  .invite-note__icon {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .invite-note__plane {
+    width: 17px !important;
+    height: 17px !important;
+  }
+
+  .invite-note__title {
+    font-size: 8.2px !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .invite-note__text {
+    font-size: 11.2px !important;
   }
 }
+/* === KOLA UNIFIED PAGE V28 END === */
 
-/* Desktop/tablet. */
+/* === KOLA FINAL HERO NOTE V29 START === */
+/*
+  Final small polish:
+  - loader notification is exactly 2 visual lines:
+    1) Новое уведомление
+    2) Вам приглашение от Оли и Кости
+  - hero names are slightly larger and lower;
+  - hero subtitle is slightly lower.
+*/
+
+/* Notification: lock body text to one line. */
+.invite-note {
+  width: min(calc(100% - 18px), 420px) !important;
+  grid-template-columns: 34px minmax(0, 1fr) !important;
+  gap: 10px !important;
+  padding: 10px 14px !important;
+}
+
+.invite-note__title {
+  margin: 0 0 4px !important;
+  font-size: 8.6px !important;
+  line-height: 1 !important;
+  letter-spacing: 0.13em !important;
+  white-space: nowrap !important;
+}
+
+.invite-note__text {
+  margin: 0 !important;
+  display: block !important;
+  color: rgba(59,42,36,.82) !important;
+  font-size: 11.6px !important;
+  line-height: 1.05 !important;
+  letter-spacing: 0 !important;
+}
+
+.invite-note__text span {
+  display: block !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+
+/* Keep paper-plane icon. */
+.invite-note__icon {
+  font-size: 0 !important;
+}
+
+.invite-note__plane {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* Hero names: bigger and a little lower. */
+.hero-photo-signature__names {
+  bottom: 28.8% !important;
+  font-size: clamp(78px, 19.4cqw, 100px) !important;
+  z-index: 9 !important;
+}
+
+/* Hero subtitle: lower, still text-only without frame. */
+.hero-clean-slideshow .hero-photo-signature__date,
+.hero-photo-signature__date {
+  bottom: 21.3% !important;
+  font-size: clamp(0.84rem, 3.9cqw, 1.08rem) !important;
+  letter-spacing: 0.13em !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Repeat the same values inside media rules so desktop/mobile stay one version. */
 @media (min-width: 720px) {
   .hero-photo-signature__names {
-    bottom: clamp(240px, 24vw, 312px) !important;
+    bottom: 28.8% !important;
+    font-size: clamp(78px, 19.4cqw, 100px) !important;
   }
 
   .hero-clean-slideshow .hero-photo-signature__date,
   .hero-photo-signature__date {
-    bottom: clamp(178px, 17vw, 226px) !important;
-    font-size: clamp(1.12rem, 1.7vw, 1.42rem) !important;
+    bottom: 21.3% !important;
+    font-size: clamp(0.84rem, 3.9cqw, 1.08rem) !important;
   }
 }
-/* === KOLA HERO DATE UNDER NAMES V18 END === */
+
+@media (max-width: 430px) {
+  .hero-photo-signature__names {
+    bottom: 28.8% !important;
+    font-size: clamp(78px, 19.4cqw, 100px) !important;
+  }
+
+  .hero-clean-slideshow .hero-photo-signature__date,
+  .hero-photo-signature__date {
+    bottom: 21.3% !important;
+    font-size: clamp(0.84rem, 3.9cqw, 1.08rem) !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .invite-note {
+    width: min(calc(100% - 14px), 374px) !important;
+    grid-template-columns: 32px minmax(0, 1fr) !important;
+    gap: 9px !important;
+    padding: 10px 12px !important;
+  }
+
+  .invite-note__text {
+    font-size: 10.9px !important;
+  }
+}
+/* === KOLA FINAL HERO NOTE V29 END === */
 
