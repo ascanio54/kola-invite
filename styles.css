@@ -10358,3 +10358,124 @@ body.page-reveal-armed.page-revealed .block-hero {
 }
 /* === KOLA DRESS COMPACT SPACING V45 END === */
 
+/* === KOLA DRESS TIGHTER FIGURE V46 START === */
+/*
+  Tiny spacing correction:
+  - less air above the figure;
+  - less air below the figure;
+  - shoes remain visible;
+  - manual slider logic unchanged.
+*/
+
+.dress-palette-picker__info {
+  margin-bottom: 2px !important;
+  padding-bottom: 2px !important;
+}
+
+.dress-clean__styles.dress-style-slider {
+  margin-top: 0 !important;
+  padding-top: 8px !important;
+  padding-bottom: 22px !important;
+  min-height: 700px !important;
+  gap: 6px !important;
+}
+
+.dress-style-slider::before {
+  top: 42px !important;
+}
+
+.dress-style-slider__stage {
+  margin-top: 0 !important;
+  height: 548px !important;
+}
+
+.dress-style-slide {
+  padding-top: 0 !important;
+  padding-bottom: 24px !important;
+}
+
+.dress-style-slide img {
+  height: 540px !important;
+  transform: scale(1.26) !important;
+  transform-origin: center center !important;
+}
+
+.dress-style-slider__captions {
+  margin-top: -6px !important;
+  min-height: 136px !important;
+}
+
+.dress-style-caption span {
+  margin-bottom: 8px !important;
+}
+
+.dress-style-caption p {
+  margin-top: 10px !important;
+}
+
+.dress-style-slider__dots {
+  margin-top: 6px !important;
+}
+
+@media (min-width: 720px) {
+  .dress-palette-picker__info {
+    margin-bottom: 4px !important;
+  }
+
+  .dress-clean__styles.dress-style-slider {
+    padding-top: 10px !important;
+    min-height: 716px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 44px !important;
+  }
+
+  .dress-style-slider__stage {
+    height: 562px !important;
+  }
+
+  .dress-style-slide img {
+    height: 554px !important;
+    transform: scale(1.27) !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: -4px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .dress-palette-picker__info {
+    margin-bottom: 2px !important;
+  }
+
+  .dress-clean__styles.dress-style-slider {
+    padding-top: 8px !important;
+    min-height: 666px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 40px !important;
+  }
+
+  .dress-style-slider__stage {
+    height: 520px !important;
+  }
+
+  .dress-style-slide {
+    padding-bottom: 22px !important;
+  }
+
+  .dress-style-slide img {
+    height: 504px !important;
+    transform: scale(1.24) !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: -4px !important;
+    min-height: 134px !important;
+  }
+}
+/* === KOLA DRESS TIGHTER FIGURE V46 END === */
+
