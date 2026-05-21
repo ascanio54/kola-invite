@@ -9946,3 +9946,415 @@ body.page-reveal-armed.page-revealed .block-hero {
 }
 /* === KOLA DRESS SLIDER HARD FIX V42 END === */
 
+/* === KOLA DRESS SPACING V43 START === */
+/*
+  Small spacing polish:
+  - more air above the outfit figure;
+  - more air between figure and caption number;
+  - keep manual slider logic unchanged;
+  - keep caption without card/rectangle.
+*/
+
+.dress-clean__styles.dress-style-slider {
+  padding-top: 26px !important;
+  padding-bottom: 28px !important;
+  min-height: 748px !important;
+  gap: 16px !important;
+}
+
+.dress-style-slider::before {
+  top: 58px !important;
+}
+
+.dress-style-slider__stage {
+  margin-top: 4px !important;
+  height: 540px !important;
+}
+
+/* Было слишком слипшееся: убираем отрицательный отступ. */
+.dress-style-slider__captions {
+  margin-top: 14px !important;
+  min-height: 142px !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.dress-style-caption {
+  padding-top: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.dress-style-caption span {
+  margin-bottom: 10px !important;
+}
+
+.dress-style-caption h3 {
+  margin-bottom: 0 !important;
+}
+
+.dress-style-caption p {
+  margin-top: 12px !important;
+}
+
+/* Dots a little lower, so they don't glue to caption text. */
+.dress-style-slider__dots {
+  margin-top: 8px !important;
+}
+
+/* Keep same idea on desktop. */
+@media (min-width: 720px) {
+  .dress-clean__styles.dress-style-slider {
+    padding-top: 28px !important;
+    min-height: 762px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 60px !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: 16px !important;
+  }
+}
+
+/* Narrow phones: still add air, but not too much vertical length. */
+@media (max-width: 390px) {
+  .dress-clean__styles.dress-style-slider {
+    padding-top: 22px !important;
+    min-height: 706px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 50px !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: 12px !important;
+    min-height: 140px !important;
+  }
+
+  .dress-style-slider__dots {
+    margin-top: 7px !important;
+  }
+}
+/* === KOLA DRESS SPACING V43 END === */
+
+/* === KOLA DRESS SAFE SPACING V44 START === */
+/*
+  Dress-code spacing polish:
+  - more top air above color circles;
+  - more air after selected color text;
+  - no shoe clipping;
+  - more air between figure and 01/02/03 caption;
+  - manual slider logic is unchanged.
+*/
+
+/* Whole dress card: more comfortable inner top/bottom rhythm. */
+.dress-clean {
+  padding-top: 28px !important;
+  padding-bottom: 30px !important;
+}
+
+/* Palette: top edge was too tight. */
+.dress-clean__palette.dress-palette-picker {
+  padding-top: 10px !important;
+  padding-bottom: 26px !important;
+  gap: 16px !important;
+}
+
+.dress-palette-picker__swatches {
+  margin-top: 2px !important;
+}
+
+/* Selected color label: more space below before the figure area starts. */
+.dress-palette-picker__info {
+  min-height: 62px !important;
+  padding-top: 10px !important;
+  padding-bottom: 12px !important;
+  margin-bottom: 18px !important;
+}
+
+/* Slider starts lower after palette. */
+.dress-clean__styles.dress-style-slider {
+  margin-top: 6px !important;
+  padding-top: 30px !important;
+  padding-bottom: 32px !important;
+  min-height: 790px !important;
+  gap: 18px !important;
+}
+
+/* Background glow follows the figure lower position. */
+.dress-style-slider::before {
+  top: 66px !important;
+}
+
+/*
+  More vertical room for the scaled SVG.
+  Keep overflow hidden for swipe, but make the frame tall enough so shoes are not clipped.
+*/
+.dress-style-slider__stage {
+  height: 590px !important;
+  margin-top: 6px !important;
+  overflow: hidden !important;
+}
+
+.dress-style-slide {
+  padding-top: 6px !important;
+  padding-bottom: 34px !important;
+}
+
+.dress-style-slide img {
+  height: 548px !important;
+  transform: scale(1.27) !important;
+  transform-origin: center center !important;
+}
+
+/* Caption lower and clear from shoes. */
+.dress-style-slider__captions {
+  margin-top: 22px !important;
+  min-height: 146px !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.dress-style-caption {
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.dress-style-caption span {
+  margin-bottom: 10px !important;
+}
+
+.dress-style-caption p {
+  margin-top: 12px !important;
+}
+
+/* Keep dots comfortably separated from text. */
+.dress-style-slider__dots {
+  margin-top: 10px !important;
+}
+
+/* Desktop keeps the same poster/mobile composition. */
+@media (min-width: 720px) {
+  .dress-clean {
+    padding-top: 30px !important;
+    padding-bottom: 32px !important;
+  }
+
+  .dress-clean__palette.dress-palette-picker {
+    padding-top: 12px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .dress-palette-picker__info {
+    margin-bottom: 20px !important;
+  }
+
+  .dress-clean__styles.dress-style-slider {
+    min-height: 810px !important;
+    padding-top: 32px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 70px !important;
+  }
+
+  .dress-style-slider__stage {
+    height: 610px !important;
+  }
+
+  .dress-style-slide {
+    padding-bottom: 38px !important;
+  }
+
+  .dress-style-slide img {
+    height: 566px !important;
+    transform: scale(1.28) !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: 24px !important;
+  }
+}
+
+/* Narrow phones: keep air, but don't make the block endless. */
+@media (max-width: 390px) {
+  .dress-clean {
+    padding-top: 24px !important;
+    padding-bottom: 28px !important;
+  }
+
+  .dress-clean__palette.dress-palette-picker {
+    padding-top: 8px !important;
+    padding-bottom: 22px !important;
+  }
+
+  .dress-palette-picker__info {
+    min-height: 58px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .dress-clean__styles.dress-style-slider {
+    min-height: 748px !important;
+    padding-top: 26px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 58px !important;
+  }
+
+  .dress-style-slider__stage {
+    height: 558px !important;
+  }
+
+  .dress-style-slide {
+    padding-bottom: 32px !important;
+  }
+
+  .dress-style-slide img {
+    height: 518px !important;
+    transform: scale(1.25) !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: 20px !important;
+    min-height: 144px !important;
+  }
+}
+/* === KOLA DRESS SAFE SPACING V44 END === */
+
+/* === KOLA DRESS COMPACT SPACING V45 START === */
+/*
+  Small correction after V44:
+  - keep top air above color circles;
+  - reduce extra gap between color label and figure;
+  - reduce extra gap between figure and caption;
+  - keep enough stage height so shoes are not clipped;
+  - do not touch manual slider logic.
+*/
+
+.dress-palette-picker__info {
+  margin-bottom: 8px !important;
+  padding-bottom: 6px !important;
+}
+
+.dress-clean__styles.dress-style-slider {
+  margin-top: 0 !important;
+  padding-top: 18px !important;
+  padding-bottom: 26px !important;
+  min-height: 735px !important;
+  gap: 10px !important;
+}
+
+.dress-style-slider::before {
+  top: 52px !important;
+}
+
+.dress-style-slider__stage {
+  margin-top: 0 !important;
+  height: 570px !important;
+}
+
+.dress-style-slide {
+  padding-top: 2px !important;
+  padding-bottom: 30px !important;
+}
+
+.dress-style-slide img {
+  height: 548px !important;
+  transform: scale(1.27) !important;
+  transform-origin: center center !important;
+}
+
+/* Было далековато от туфель до 01 — поднимаем подпись, но без слипания. */
+.dress-style-slider__captions {
+  margin-top: 8px !important;
+  min-height: 142px !important;
+}
+
+.dress-style-slider__dots {
+  margin-top: 8px !important;
+}
+
+@media (min-width: 720px) {
+  .dress-palette-picker__info {
+    margin-bottom: 10px !important;
+  }
+
+  .dress-clean__styles.dress-style-slider {
+    padding-top: 20px !important;
+    min-height: 750px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 54px !important;
+  }
+
+  .dress-style-slider__stage {
+    height: 585px !important;
+  }
+
+  .dress-style-slide img {
+    height: 562px !important;
+    transform: scale(1.28) !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: 10px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .dress-palette-picker__info {
+    margin-bottom: 8px !important;
+  }
+
+  .dress-clean__styles.dress-style-slider {
+    padding-top: 16px !important;
+    min-height: 692px !important;
+  }
+
+  .dress-style-slider::before {
+    top: 48px !important;
+  }
+
+  .dress-style-slider__stage {
+    height: 538px !important;
+  }
+
+  .dress-style-slide {
+    padding-bottom: 28px !important;
+  }
+
+  .dress-style-slide img {
+    height: 510px !important;
+    transform: scale(1.25) !important;
+  }
+
+  .dress-style-slider__captions {
+    margin-top: 8px !important;
+  }
+}
+/* === KOLA DRESS COMPACT SPACING V45 END === */
+
