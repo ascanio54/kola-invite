@@ -490,77 +490,112 @@
 
                 <div class="dress-clean">
                     <div
-                        class="dress-clean__palette"
+                        class="dress-clean__palette dress-palette-picker"
                         aria-label="Цвета и настроение"
                     >
-                        <article class="dress-chip dress-chip--ivory">
-                            <span></span>
-                            <div>
-                                <b>Тёплый бежевый</b>
-                                <small>мягкий природный</small>
-                            </div>
-                        </article>
+                        <div class="dress-palette-picker__swatches" role="list" aria-label="Выберите оттенок">
+                            <button class="dress-palette-swatch is-active" type="button" style="--swatch: #e4c9b6" data-color-name="Тёплый бежевый" data-color-desc="мягкая природная база" aria-pressed="true">
+                                <span class="visually-hidden">Тёплый бежевый</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #d6a59a" data-color-name="Пудрово-розовый" data-color-desc="нежный тёплый акцент" aria-pressed="false">
+                                <span class="visually-hidden">Пудрово-розовый</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #b9bca7" data-color-name="Шалфейный" data-color-desc="спокойная мягкая зелень" aria-pressed="false">
+                                <span class="visually-hidden">Шалфейный</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #a5b1bc" data-color-name="Серо-голубой" data-color-desc="прохладный спокойный баланс" aria-pressed="false">
+                                <span class="visually-hidden">Серо-голубой</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #cbdce8" data-color-name="Небесно-голубой" data-color-desc="светлый прохладный оттенок" aria-pressed="false">
+                                <span class="visually-hidden">Небесно-голубой</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #f2eadc" data-color-name="Молочный" data-color-desc="самый светлый базовый тон" aria-pressed="false">
+                                <span class="visually-hidden">Молочный</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #d7c4ad" data-color-name="Шампань" data-color-desc="мягкий праздничный бежевый" aria-pressed="false">
+                                <span class="visually-hidden">Шампань</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #caa67d" data-color-name="Золотисто-бежевый" data-color-desc="тёплый тканевый акцент" aria-pressed="false">
+                                <span class="visually-hidden">Золотисто-бежевый</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #b99aa0" data-color-name="Пыльная роза" data-color-desc="приглушённый розовый тон" aria-pressed="false">
+                                <span class="visually-hidden">Пыльная роза</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #7f8c69" data-color-name="Оливковый" data-color-desc="глубокая природная зелень" aria-pressed="false">
+                                <span class="visually-hidden">Оливковый</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #9e8a7a" data-color-name="Тауп" data-color-desc="сложный спокойный нейтральный" aria-pressed="false">
+                                <span class="visually-hidden">Тауп</span>
+                            </button>
+                            <button class="dress-palette-swatch" type="button" style="--swatch: #3b2925" data-color-name="Шоколадный" data-color-desc="тёмный акцент, лучше дозированно" aria-pressed="false">
+                                <span class="visually-hidden">Шоколадный</span>
+                            </button>
+                        </div>
 
-                        <article class="dress-chip dress-chip--champagne">
-                            <span></span>
-                            <div>
-                                <b>Пудрово-розовый</b>
-                                <small>нежный акцент</small>
-                            </div>
-                        </article>
-
-                        <article class="dress-chip dress-chip--sage">
-                            <span></span>
-                            <div>
-                                <b>Шалфейный</b>
-                                <small>спокойная зелень</small>
-                            </div>
-                        </article>
-
-                        <article class="dress-chip dress-chip--olive">
-                            <span></span>
-                            <div>
-                                <b>Серо-голубой</b>
-                                <small>прохладный баланс</small>
-                            </div>
-                        </article>
-
-                        <article class="dress-chip dress-chip--cola">
-                            <span></span>
-                            <div>
-                                <b>Дополнительный</b>
-                                <small>по&nbsp;желанию</small>
-                            </div>
-                        </article>
+                        <div class="dress-palette-picker__info" aria-live="polite">
+                            <b data-dress-color-name>Тёплый бежевый</b>
+                            <small data-dress-color-desc>мягкая природная база</small>
+                        </div>
                     </div>
 
-                    <div class="dress-clean__styles">
-                        <article>
-                            <span>01</span>
-                            <h3>Cocktail</h3>
-                            <p>
-                                Лёгкий праздничный образ без ощущения строгого
-                                дресс-кода.
-                            </p>
-                        </article>
+                    <div class="dress-clean__styles dress-style-slider" aria-label="Варианты образов для дресс-кода">
+                        <div class="dress-style-slider__stage" aria-hidden="true">
+                            <figure class="dress-style-slide dress-style-slide--one">
+                                <img
+                                    src="./assets/img/dress/dress-cocktail.svg"
+                                    alt=""
+                                />
+                            </figure>
 
-                        <article>
-                            <span>02</span>
-                            <h3>Smart casual</h3>
-                            <p>
-                                Костюм, рубашка, платье или то, в&nbsp;чём вам
-                                красиво и&nbsp;удобно.
-                            </p>
-                        </article>
+                            <figure class="dress-style-slide dress-style-slide--two">
+                                <img
+                                    src="./assets/img/dress/dress-smart-casual.svg"
+                                    alt=""
+                                />
+                            </figure>
 
-                        <article>
-                            <span>03</span>
-                            <h3>Soft classic</h3>
-                            <p>
-                                Спокойные оттенки, аккуратные детали и&nbsp;комфорт
-                                на&nbsp;весь вечер.
-                            </p>
-                        </article>
+                            <figure class="dress-style-slide dress-style-slide--three">
+                                <img
+                                    src="./assets/img/dress/dress-soft-classic.svg"
+                                    alt=""
+                                />
+                            </figure>
+                        </div>
+
+                        <div class="dress-style-slider__captions">
+                            <article class="dress-style-caption dress-style-caption--one">
+                                <span>01</span>
+                                <h3>Cocktail</h3>
+                                <p>
+                                    Лёгкий праздничный образ без ощущения строгого
+                                    дресс-кода.
+                                </p>
+                            </article>
+
+                            <article class="dress-style-caption dress-style-caption--two">
+                                <span>02</span>
+                                <h3>Smart casual</h3>
+                                <p>
+                                    Костюм, рубашка, платье или то, в&nbsp;чём вам
+                                    красиво и&nbsp;удобно.
+                                </p>
+                            </article>
+
+                            <article class="dress-style-caption dress-style-caption--three">
+                                <span>03</span>
+                                <h3>Soft classic</h3>
+                                <p>
+                                    Спокойные оттенки, аккуратные детали и&nbsp;комфорт
+                                    на&nbsp;весь вечер.
+                                </p>
+                            </article>
+                        </div>
+
+                        <div class="dress-style-slider__dots" aria-hidden="true">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
                     </div>
                 </div>
             </section>

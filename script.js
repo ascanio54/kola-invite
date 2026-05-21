@@ -700,3 +700,35 @@ toneButtons.forEach((button) => {
 })();
 /* === KOLA PAGE REVEAL AFTER LOADER V34 END === */
 
+/* === KOLA DRESS PALETTE PICKER V39 START === */
+/*
+  Interactive dress-code color palette.
+  Static fallback is visible without JS; JS only changes the selected label.
+*/
+(() => {
+  const picker = document.querySelector(".dress-palette-picker");
+  if (!picker) return;
+
+  const buttons = Array.from(picker.querySelectorAll(".dress-palette-swatch"));
+  const nameTarget = picker.querySelector("[data-dress-color-name]");
+  const descTarget = picker.querySelector("[data-dress-color-desc]");
+
+  if (!buttons.length || !nameTarget || !descTarget) return;
+
+  const activate = (button) => {
+    buttons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    nameTarget.textContent = button.dataset.colorName || "";
+    descTarget.textContent = button.dataset.colorDesc || "";
+  };
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => activate(button));
+  });
+})();
+/* === KOLA DRESS PALETTE PICKER V39 END === */
+
