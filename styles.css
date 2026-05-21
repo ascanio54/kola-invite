@@ -9532,398 +9532,17 @@ body.page-reveal-armed.page-revealed .block-hero {
 }
 /* === KOLA PAGE REVEAL AFTER LOADER V34 END === */\n\n
 
-/* === KOLA DRESS BIG FIGURE V38 START === */
+/* === KOLA DRESS SLIDER HARD FIX V42 START === */
 /*
-  Dress-code style slider polish:
-  - much larger outfit figure;
-  - caption sits directly on the dress-code background;
-  - no nested white rectangle/card under the text;
-  - keep right-to-left swipe effect.
+  Hard fix:
+  - palette circles have no visible text inside;
+  - manual outfit slider only;
+  - no old auto-slider ghost frames;
+  - caption has no card/rectangle;
+  - active dots are meaningful.
 */
 
-.dress-clean__styles.dress-style-slider {
-  position: relative !important;
-  overflow: hidden !important;
-
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  justify-items: center !important;
-  gap: 4px !important;
-
-  min-height: 610px !important;
-  padding: 12px 0 22px !important;
-
-  border: 0 !important;
-  border-radius: 0 !important;
-  background:
-    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.50), transparent 13rem),
-    radial-gradient(circle at 20% 78%, rgba(214, 165, 154, 0.10), transparent 8rem),
-    radial-gradient(circle at 84% 78%, rgba(185, 188, 167, 0.13), transparent 8rem) !important;
-  box-shadow: none !important;
-}
-
-.dress-style-slider::before {
-  content: "" !important;
-  position: absolute !important;
-  left: 50% !important;
-  top: 42px !important;
-  width: 286px !important;
-  height: 286px !important;
-  transform: translateX(-50%) !important;
-  border-radius: 999px !important;
-  background: rgba(255, 248, 237, 0.32) !important;
-  pointer-events: none !important;
-}
-
-.dress-style-slider::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* Bigger figure area */
-.dress-style-slider__stage {
-  position: relative !important;
-  z-index: 1 !important;
-
-  width: min(100%, 390px) !important;
-  height: 410px !important;
-  margin: 0 auto !important;
-
-  overflow: hidden !important;
-}
-
-.dress-style-slide {
-  position: absolute !important;
-  inset: 0 !important;
-
-  display: grid !important;
-  place-items: center !important;
-
-  margin: 0 !important;
-  opacity: 1 !important;
-  filter: none !important;
-
-  transform: translate3d(112%, 0, 0);
-  visibility: hidden;
-
-  animation: dress-style-swipe-v38 13.5s cubic-bezier(0.22, 0.76, 0.22, 1) infinite;
-  will-change: transform, visibility;
-}
-
-.dress-style-slide img {
-  width: min(100%, 370px) !important;
-  height: 400px !important;
-  display: block !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-}
-
-.dress-style-slide--one {
-  animation-delay: 0s;
-}
-
-.dress-style-slide--two {
-  animation-delay: 4.5s;
-}
-
-.dress-style-slide--three {
-  animation-delay: 9s;
-}
-
-/* Caption: no card, no rectangle, directly on background */
-.dress-style-slider__captions {
-  position: relative !important;
-  z-index: 2 !important;
-
-  width: min(100%, 340px) !important;
-  min-height: 132px !important;
-  margin: -10px auto 0 !important;
-  overflow: hidden !important;
-
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-.dress-clean__styles.dress-style-slider .dress-style-caption,
-.dress-style-slider__captions .dress-style-caption {
-  position: absolute !important;
-  inset: 0 !important;
-
-  display: grid !important;
-  justify-items: center !important;
-  align-content: start !important;
-
-  margin: 0 !important;
-  padding: 0 10px !important;
-
-  text-align: center !important;
-
-  opacity: 1 !important;
-  filter: none !important;
-
-  border: 0 !important;
-  outline: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  background-color: transparent !important;
-  background-image: none !important;
-  box-shadow: none !important;
-
-  transform: translate3d(112%, 0, 0);
-  visibility: hidden;
-
-  animation: dress-caption-swipe-v38 13.5s cubic-bezier(0.22, 0.76, 0.22, 1) infinite;
-  will-change: transform, visibility;
-}
-
-.dress-style-caption--one {
-  animation-delay: 0s !important;
-}
-
-.dress-style-caption--two {
-  animation-delay: 4.5s !important;
-}
-
-.dress-style-caption--three {
-  animation-delay: 9s !important;
-}
-
-/* Number without visible pill/card */
-.dress-clean__styles.dress-style-slider .dress-style-caption span {
-  display: block !important;
-  min-width: 0 !important;
-  height: auto !important;
-  margin: 0 0 8px !important;
-  padding: 0 !important;
-
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
-
-  color: rgba(103, 44, 39, 0.62) !important;
-  font-family: var(--font-base) !important;
-  font-size: 0.72rem !important;
-  font-weight: 900 !important;
-  letter-spacing: 0.14em !important;
-}
-
-.dress-clean__styles.dress-style-slider .dress-style-caption h3 {
-  margin: 0 !important;
-  color: var(--brown) !important;
-  font-family: var(--font-base) !important;
-  font-size: clamp(1.52rem, 5.8vw, 1.82rem) !important;
-  font-weight: 850 !important;
-  letter-spacing: -0.02em !important;
-  line-height: 1.08 !important;
-}
-
-.dress-clean__styles.dress-style-slider .dress-style-caption p {
-  max-width: 280px !important;
-  margin: 10px auto 0 !important;
-  color: var(--brown-soft) !important;
-  font-family: var(--font-base) !important;
-  font-size: 0.95rem !important;
-  line-height: 1.52 !important;
-  text-align: center !important;
-}
-
-/* Dots */
-.dress-style-slider__dots {
-  position: relative !important;
-  z-index: 3 !important;
-  display: flex !important;
-  justify-content: center !important;
-  gap: 7px !important;
-  margin-top: 2px !important;
-}
-
-.dress-style-slider__dots i {
-  display: block !important;
-  width: 7px !important;
-  height: 7px !important;
-  border-radius: 999px !important;
-  background: rgba(103, 44, 39, 0.20) !important;
-  animation: dress-style-dot-v38 13.5s steps(1, end) infinite;
-}
-
-.dress-style-slider__dots i:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.dress-style-slider__dots i:nth-child(2) {
-  animation-delay: 4.5s;
-}
-
-.dress-style-slider__dots i:nth-child(3) {
-  animation-delay: 9s;
-}
-
-/* Swipe right-to-left */
-@keyframes dress-style-swipe-v38 {
-  0% {
-    visibility: visible;
-    transform: translate3d(112%, 0, 0);
-  }
-
-  6%,
-  28% {
-    visibility: visible;
-    transform: translate3d(0, 0, 0);
-  }
-
-  35% {
-    visibility: visible;
-    transform: translate3d(-112%, 0, 0);
-  }
-
-  35.01%,
-  100% {
-    visibility: hidden;
-    transform: translate3d(-112%, 0, 0);
-  }
-}
-
-@keyframes dress-caption-swipe-v38 {
-  0% {
-    visibility: visible;
-    transform: translate3d(112%, 0, 0);
-  }
-
-  6%,
-  28% {
-    visibility: visible;
-    transform: translate3d(0, 0, 0);
-  }
-
-  35% {
-    visibility: visible;
-    transform: translate3d(-112%, 0, 0);
-  }
-
-  35.01%,
-  100% {
-    visibility: hidden;
-    transform: translate3d(-112%, 0, 0);
-  }
-}
-
-@keyframes dress-style-dot-v38 {
-  0%,
-  35% {
-    width: 20px;
-    background: rgba(103, 44, 39, 0.64);
-  }
-
-  35.01%,
-  100% {
-    width: 7px;
-    background: rgba(103, 44, 39, 0.20);
-  }
-}
-
-@media (min-width: 720px) {
-  .dress-clean__styles.dress-style-slider {
-    min-height: 630px !important;
-  }
-
-  .dress-style-slider__stage {
-    width: min(100%, 400px) !important;
-    height: 425px !important;
-  }
-
-  .dress-style-slide img {
-    width: 385px !important;
-    height: 415px !important;
-  }
-}
-
-@media (max-width: 390px) {
-  .dress-clean__styles.dress-style-slider {
-    min-height: 570px !important;
-    padding: 8px 0 18px !important;
-  }
-
-  .dress-style-slider::before {
-    top: 34px !important;
-    width: 252px !important;
-    height: 252px !important;
-  }
-
-  .dress-style-slider__stage {
-    width: min(100%, 350px) !important;
-    height: 380px !important;
-  }
-
-  .dress-style-slide img {
-    width: 340px !important;
-    height: 370px !important;
-  }
-
-  .dress-style-slider__captions {
-    min-height: 134px !important;
-  }
-
-  .dress-clean__styles.dress-style-slider .dress-style-caption h3 {
-    font-size: 1.42rem !important;
-  }
-
-  .dress-clean__styles.dress-style-slider .dress-style-caption p {
-    font-size: 0.9rem !important;
-    line-height: 1.48 !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dress-style-slide,
-  .dress-style-caption,
-  .dress-style-slider__dots i {
-    animation: none !important;
-  }
-
-  .dress-style-slide,
-  .dress-style-caption {
-    visibility: hidden !important;
-    transform: none !important;
-  }
-
-  .dress-style-slide--one,
-  .dress-style-caption--one {
-    visibility: visible !important;
-  }
-
-  .dress-style-slider__dots i:first-child {
-    width: 20px !important;
-    background: rgba(103, 44, 39, 0.64) !important;
-  }
-}
-/* === KOLA DRESS BIG FIGURE V38 END === */
-
-/* === KOLA DRESS PALETTE PICKER V39 START === */
-/*
-  Dress-code polish:
-  - compact interactive palette with color circles;
-  - selected color name appears below;
-  - outfit figure is much larger;
-  - swipe effect from V37/V38 remains.
-*/
-
-.visually-hidden {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-/* Compact palette */
+/* Palette: circles only */
 .dress-clean__palette.dress-palette-picker {
   display: grid !important;
   gap: 12px !important;
@@ -9946,13 +9565,24 @@ body.page-reveal-armed.page-revealed .block-hero {
   border-radius: 999px !important;
   background: var(--swatch) !important;
   cursor: pointer !important;
+  color: transparent !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: visible !important;
   box-shadow:
     inset 0 0 0 7px rgba(255, 255, 255, 0.20),
     0 9px 18px rgba(68, 51, 43, 0.10) !important;
   transition:
     transform 180ms ease,
-    box-shadow 180ms ease,
-    outline-color 180ms ease !important;
+    box-shadow 180ms ease !important;
+}
+
+.dress-palette-swatch *,
+.dress-palette-swatch span,
+.dress-palette-swatch .visually-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .dress-palette-swatch::after {
@@ -9975,9 +9605,10 @@ body.page-reveal-armed.page-revealed .block-hero {
   border-color: rgba(103, 44, 39, 0.42) !important;
 }
 
-.dress-palette-swatch:focus-visible {
-  outline: 2px solid rgba(103, 44, 39, 0.48) !important;
-  outline-offset: 6px !important;
+.dress-palette-swatch:focus-visible,
+.dress-style-dot:focus-visible {
+  outline: 2px solid rgba(103, 44, 39, 0.46) !important;
+  outline-offset: 5px !important;
 }
 
 .dress-palette-picker__info {
@@ -10007,71 +9638,257 @@ body.page-reveal-armed.page-revealed .block-hero {
   line-height: 1.28 !important;
 }
 
-/* Hide old chip layout if old styles still target children. */
-.dress-palette-picker .dress-chip {
-  display: none !important;
-}
-
-/* Figure: make it significantly larger while keeping swipe effect. */
+/* Slider shell */
 .dress-clean__styles.dress-style-slider {
-  min-height: 690px !important;
-  padding-top: 4px !important;
-  padding-bottom: 24px !important;
+  position: relative !important;
+  overflow: hidden !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  gap: 8px !important;
+
+  min-height: 710px !important;
+  padding: 4px 0 24px !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background:
+    radial-gradient(circle at 50% 28%, rgba(255, 255, 255, 0.48), transparent 13rem),
+    radial-gradient(circle at 20% 78%, rgba(214, 165, 154, 0.10), transparent 8rem),
+    radial-gradient(circle at 84% 78%, rgba(185, 188, 167, 0.13), transparent 8rem) !important;
+  box-shadow: none !important;
 }
 
 .dress-style-slider::before {
-  top: 36px !important;
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 38px !important;
   width: 330px !important;
   height: 330px !important;
+  transform: translateX(-50%) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 248, 237, 0.30) !important;
+  pointer-events: none !important;
 }
 
+.dress-style-slider::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Figure area */
 .dress-style-slider__stage {
-  width: min(100%, 420px) !important;
-  height: 500px !important;
+  position: relative !important;
+  z-index: 1 !important;
+
+  width: min(100%, 430px) !important;
+  height: 540px !important;
+  margin: 0 auto !important;
+
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+.dress-style-slide {
+  position: absolute !important;
+  inset: 0 !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  margin: 0 !important;
+  opacity: 1 !important;
+  filter: none !important;
+  visibility: hidden !important;
+  transform: translate3d(112%, 0, 0) !important;
+
+  animation: none !important;
+  transition: none !important;
+  will-change: transform !important;
 }
 
 .dress-style-slide img {
-  width: min(142%, 520px) !important;
-  height: 500px !important;
+  width: min(156%, 570px) !important;
+  max-width: none !important;
+  height: 540px !important;
+  display: block !important;
   object-fit: contain !important;
   object-position: center center !important;
-  transform: scale(1.22) !important;
+  transform: scale(1.32) !important;
   transform-origin: center center !important;
 }
 
-.dress-style-slider__captions {
-  margin-top: -22px !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  border: 0 !important;
+.dress-style-slide.is-active {
+  visibility: visible !important;
+  transform: translate3d(0, 0, 0) !important;
+  transition: transform 430ms cubic-bezier(0.22, 0.76, 0.22, 1) !important;
+  z-index: 2 !important;
 }
 
-.dress-clean__styles.dress-style-slider .dress-style-caption,
-.dress-style-slider__captions .dress-style-caption {
+/* New slide starts offscreen, then enters. Previous slide is hidden immediately. */
+.dress-style-slide.is-swipe-in {
+  visibility: visible !important;
+  transform: translate3d(112%, 0, 0) !important;
+  transition: none !important;
+  z-index: 3 !important;
+}
+
+/* Kill old leaving ghosts if stale JS/class remains. */
+.dress-style-slide.is-leaving,
+.dress-style-caption.is-leaving {
+  visibility: hidden !important;
+  display: none !important;
+  opacity: 0 !important;
+  transform: none !important;
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Caption: direct text on background, not a card */
+.dress-style-slider__captions {
+  position: relative !important;
+  z-index: 3 !important;
+
+  width: min(100%, 340px) !important;
+  min-height: 138px !important;
+  margin: -20px auto 0 !important;
+  overflow: visible !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
   background: transparent !important;
   background-color: transparent !important;
   box-shadow: none !important;
+}
+
+.dress-clean__styles.dress-style-slider .dress-style-slider__captions > article.dress-style-caption,
+.dress-style-slider__captions > article.dress-style-caption,
+.dress-style-caption {
+  display: none !important;
+  position: static !important;
+
+  margin: 0 !important;
+  padding: 0 10px !important;
+
+  text-align: center !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.dress-clean__styles.dress-style-slider .dress-style-slider__captions > article.dress-style-caption.is-active,
+.dress-style-slider__captions > article.dress-style-caption.is-active,
+.dress-style-caption.is-active {
+  display: grid !important;
+  justify-items: center !important;
+  align-content: start !important;
+}
+
+.dress-style-caption span {
+  display: block !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 0 8px !important;
+  padding: 0 !important;
+
   border: 0 !important;
   border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  color: rgba(103, 44, 39, 0.62) !important;
+  font-family: var(--font-base) !important;
+  font-size: 0.72rem !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.14em !important;
+}
+
+.dress-style-caption h3 {
+  margin: 0 !important;
+  color: var(--brown) !important;
+  font-family: var(--font-base) !important;
+  font-size: clamp(1.52rem, 5.8vw, 1.82rem) !important;
+  font-weight: 850 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.08 !important;
+}
+
+.dress-style-caption p {
+  max-width: 280px !important;
+  margin: 10px auto 0 !important;
+  color: var(--brown-soft) !important;
+  font-family: var(--font-base) !important;
+  font-size: 0.95rem !important;
+  line-height: 1.52 !important;
+  text-align: center !important;
+}
+
+/* Dots */
+.dress-style-slider__dots {
+  position: relative !important;
+  z-index: 4 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 2px !important;
+}
+
+.dress-style-slider__dots i {
+  display: none !important;
+}
+
+.dress-style-dot {
+  display: block !important;
+  width: 8px !important;
+  height: 8px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: rgba(103, 44, 39, 0.22) !important;
+  cursor: pointer !important;
+
+  animation: none !important;
+  transition:
+    width 180ms ease,
+    background-color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.dress-style-dot.is-active {
+  width: 26px !important;
+  background: rgba(103, 44, 39, 0.68) !important;
+  box-shadow: 0 5px 12px rgba(103, 44, 39, 0.18) !important;
 }
 
 @media (min-width: 720px) {
-  .dress-palette-picker__swatches {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-
   .dress-clean__styles.dress-style-slider {
-    min-height: 710px !important;
+    min-height: 725px !important;
   }
 
   .dress-style-slider__stage {
-    height: 520px !important;
+    height: 555px !important;
   }
 
   .dress-style-slide img {
-    width: min(145%, 540px) !important;
-    height: 520px !important;
-    transform: scale(1.24) !important;
+    width: min(158%, 590px) !important;
+    height: 555px !important;
+    transform: scale(1.34) !important;
   }
 }
 
@@ -10087,27 +9904,45 @@ body.page-reveal-armed.page-revealed .block-hero {
   }
 
   .dress-clean__styles.dress-style-slider {
-    min-height: 640px !important;
+    min-height: 670px !important;
+    padding-bottom: 20px !important;
   }
 
   .dress-style-slider::before {
-    width: 292px !important;
-    height: 292px !important;
+    width: 300px !important;
+    height: 300px !important;
   }
 
   .dress-style-slider__stage {
-    height: 465px !important;
+    width: min(100%, 370px) !important;
+    height: 500px !important;
   }
 
   .dress-style-slide img {
-    width: min(150%, 500px) !important;
-    height: 465px !important;
-    transform: scale(1.24) !important;
+    width: min(162%, 540px) !important;
+    height: 500px !important;
+    transform: scale(1.32) !important;
   }
 
   .dress-style-slider__captions {
     margin-top: -18px !important;
+    min-height: 136px !important;
+  }
+
+  .dress-style-caption h3 {
+    font-size: 1.42rem !important;
+  }
+
+  .dress-style-caption p {
+    font-size: 0.9rem !important;
+    line-height: 1.48 !important;
   }
 }
-/* === KOLA DRESS PALETTE PICKER V39 END === */
+
+@media (prefers-reduced-motion: reduce) {
+  .dress-style-slide {
+    transition: none !important;
+  }
+}
+/* === KOLA DRESS SLIDER HARD FIX V42 END === */
 

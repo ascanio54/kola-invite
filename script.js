@@ -732,3 +732,112 @@ toneButtons.forEach((button) => {
 })();
 /* === KOLA DRESS PALETTE PICKER V39 END === */
 
+/* === KOLA DRESS SLIDER HARD FIX V42 START === */
+/*
+  Manual dress-code slider.
+  No autoplay. No leaving ghost slide.
+*/
+(() => {
+  const slider = document.querySelector(".dress-style-slider");
+  if (!slider) return;
+
+  const slides = Array.from(slider.querySelectorAll(".dress-style-slide"));
+  const captions = Array.from(slider.querySelectorAll(".dress-style-caption"));
+  const dots = Array.from(slider.querySelectorAll(".dress-style-dot"));
+  const stage = slider.querySelector(".dress-style-slider__stage");
+
+  if (!slides.length || slides.length !== captions.length || !dots.length) return;
+
+  let activeIndex = 0;
+  let locked = false;
+
+  const normalizeIndex = (index) =>
+    ((index % slides.length) + slides.length) % slides.length;
+
+  const setDots = (nextIndex) => {
+    dots.forEach((dot, index) => {
+      const active = index === nextIndex;
+      dot.classList.toggle("is-active", active);
+      dot.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  };
+
+  const setCaptions = (nextIndex) => {
+    captions.forEach((caption, index) => {
+      caption.classList.toggle("is-active", index === nextIndex);
+    });
+  };
+
+  const hardResetSlides = () => {
+    slides.forEach((slide) => {
+      slide.classList.remove("is-active", "is-entering", "is-leaving", "is-swipe-in");
+    });
+  };
+
+  const setImmediate = (nextIndex) => {
+    activeIndex = normalizeIndex(nextIndex);
+    slider.dataset.dressStyleIndex = String(activeIndex);
+
+    hardResetSlides();
+    slides[activeIndex].classList.add("is-active");
+
+    setCaptions(activeIndex);
+    setDots(activeIndex);
+  };
+
+  const goTo = (nextIndex) => {
+    if (locked) return;
+
+    const normalized = normalizeIndex(nextIndex);
+    if (normalized === activeIndex) return;
+
+    locked = true;
+
+    /*
+      Important:
+      Previous slide is hidden immediately.
+      Only the new slide enters from the right.
+      This removes ghost figures from old auto-slider logic.
+    */
+    hardResetSlides();
+
+    const nextSlide = slides[normalized];
+    nextSlide.classList.add("is-active", "is-swipe-in");
+
+    setCaptions(normalized);
+    setDots(normalized);
+
+    void nextSlide.offsetWidth;
+
+    requestAnimationFrame(() => {
+      nextSlide.classList.remove("is-swipe-in");
+    });
+
+    activeIndex = normalized;
+    slider.dataset.dressStyleIndex = String(activeIndex);
+
+    window.setTimeout(() => {
+      slides.forEach((slide, index) => {
+        slide.classList.remove("is-entering", "is-leaving", "is-swipe-in");
+        slide.classList.toggle("is-active", index === activeIndex);
+      });
+
+      locked = false;
+    }, 470);
+  };
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const nextIndex = Number.parseInt(dot.dataset.dressStyleTarget || "0", 10);
+      goTo(nextIndex);
+    });
+  });
+
+  stage?.addEventListener("click", () => {
+    goTo(activeIndex + 1);
+  });
+
+  setImmediate(0);
+})();
+/* === KOLA DRESS SLIDER HARD FIX V42 END === */
+
