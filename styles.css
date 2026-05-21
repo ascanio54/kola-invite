@@ -11611,3 +11611,966 @@ body.page-reveal-armed:not(.page-revealed) .ambient-bg {
 }
 /* === KOLA DETAILS CLOSING POLISH V52 END === */
 
+/* === KOLA QR RSVP CLOSING DECOR PREP V53 START === */
+/*
+  V53:
+  - QR in Details block has the same layout on mobile and desktop;
+  - Flower subscription card is always one centered column;
+  - RSVP heading gets more breathing room before description;
+  - no RSVP endpoint changes.
+*/
+
+/* Details: force the flower subscription card into one consistent layout */
+.details-block .detail-elegant-card--flowers {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  align-items: center !important;
+  text-align: center !important;
+
+  gap: 24px !important;
+  padding: 38px 26px 42px !important;
+}
+
+.details-block .detail-elegant-card--flowers .detail-elegant-icon,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon--image,
+.details-block .detail-elegant-card--flowers .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-qr,
+.details-block .detail-elegant-card--flowers .qr-frame {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+}
+
+.details-block .detail-elegant-card--flowers .detail-elegant-content {
+  width: 100% !important;
+  max-width: 330px !important;
+  display: grid !important;
+  justify-items: center !important;
+  text-align: center !important;
+}
+
+.details-block .detail-elegant-card--flowers .button {
+  margin-top: 10px !important;
+  margin-bottom: 4px !important;
+}
+
+/* QR: same size and centered everywhere */
+.details-block .detail-elegant-card--flowers .detail-elegant-qr,
+.details-block .detail-elegant-card--flowers .qr-frame,
+.details-block .detail-elegant-qr.qr-frame {
+  width: 100% !important;
+  max-width: 264px !important;
+  margin: 4px auto 0 !important;
+  padding: 0 !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.details-block .detail-elegant-card--flowers .detail-elegant-qr img,
+.details-block .detail-elegant-card--flowers .qr-frame img,
+.details-block .detail-elegant-qr.qr-frame img {
+  width: 252px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+
+  border-radius: 18px !important;
+  background: #fff !important;
+  box-shadow:
+    0 14px 30px rgba(68, 51, 43, 0.10),
+    0 0 0 1px rgba(68, 51, 43, 0.06) !important;
+}
+
+/* RSVP: more air between title and description */
+.rsvp-block .section-heading {
+  display: grid !important;
+  justify-items: center !important;
+  gap: 18px !important;
+  margin-bottom: 30px !important;
+  text-align: center !important;
+}
+
+.rsvp-block .section-heading h2 {
+  margin-bottom: 0 !important;
+}
+
+.rsvp-block .section-heading p {
+  max-width: 34ch !important;
+  margin-top: 0 !important;
+  line-height: 1.62 !important;
+}
+
+@media (min-width: 720px) {
+  .details-block .detail-elegant-card--flowers {
+    grid-template-columns: 1fr !important;
+    max-width: 420px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-qr,
+  .details-block .detail-elegant-card--flowers .qr-frame,
+  .details-block .detail-elegant-qr.qr-frame {
+    max-width: 264px !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-qr img,
+  .details-block .detail-elegant-card--flowers .qr-frame img,
+  .details-block .detail-elegant-qr.qr-frame img {
+    width: 252px !important;
+  }
+
+  .rsvp-block .section-heading {
+    gap: 20px !important;
+    margin-bottom: 32px !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .details-block .detail-elegant-card--flowers {
+    padding: 36px 22px 40px !important;
+    gap: 22px !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-qr,
+  .details-block .detail-elegant-card--flowers .qr-frame,
+  .details-block .detail-elegant-qr.qr-frame {
+    max-width: 254px !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-qr img,
+  .details-block .detail-elegant-card--flowers .qr-frame img,
+  .details-block .detail-elegant-qr.qr-frame img {
+    width: 242px !important;
+  }
+
+  .rsvp-block .section-heading {
+    gap: 16px !important;
+    margin-bottom: 28px !important;
+  }
+}
+/* === KOLA QR RSVP CLOSING DECOR PREP V53 END === */
+
+/* === KOLA DETAILS BOOK CLOSING DECOR V54 START === */
+/*
+  V54:
+  - book card now uses the same centered one-column layout as flowers;
+  - book and bouquet icons are larger;
+  - closing block gets subtle SVG decorations;
+  - no RSVP / form backend changes.
+*/
+
+/* Details: both cards use one consistent layout */
+.details-block .detail-elegant-card--book,
+.details-block .detail-elegant-card--flowers {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  align-items: center !important;
+  text-align: center !important;
+
+  gap: 26px !important;
+  padding: 42px 26px 44px !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-icon,
+.details-block .detail-elegant-card--book .detail-elegant-icon--image,
+.details-block .detail-elegant-card--book .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon--image,
+.details-block .detail-elegant-card--flowers .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-qr,
+.details-block .detail-elegant-card--flowers .qr-frame {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-content {
+  width: 100% !important;
+  max-width: 340px !important;
+  display: grid !important;
+  justify-items: center !important;
+  gap: 14px !important;
+  text-align: center !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-content h3,
+.details-block .detail-elegant-card--flowers .detail-elegant-content h3 {
+  margin: 0 !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-content p,
+.details-block .detail-elegant-card--flowers .detail-elegant-content p {
+  margin: 0 !important;
+  max-width: 32ch !important;
+  line-height: 1.66 !important;
+}
+
+/* Bigger book / bouquet icons */
+.details-block .detail-elegant-icon,
+.details-block .detail-elegant-icon--image {
+  width: 184px !important;
+  height: 184px !important;
+  display: grid !important;
+  place-items: center !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.details-block .detail-elegant-icon--image img,
+.details-block .detail-elegant-icon img {
+  width: 178px !important;
+  height: 178px !important;
+  max-width: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-icon--image img,
+.details-block .detail-elegant-card--book .detail-elegant-icon img {
+  width: 192px !important;
+  height: 192px !important;
+}
+
+.details-block .detail-elegant-card--flowers .detail-elegant-icon--image img,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon img {
+  width: 198px !important;
+  height: 198px !important;
+}
+
+/* QR remains centered and consistent */
+.details-block .detail-elegant-card--flowers .detail-elegant-qr,
+.details-block .detail-elegant-card--flowers .qr-frame,
+.details-block .detail-elegant-qr.qr-frame {
+  width: 100% !important;
+  max-width: 264px !important;
+  margin: 4px auto 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Closing: keep no rectangle, add subtle decor */
+.closing-block {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+
+  padding: 44px 18px 96px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+/* Main footer floral element */
+.closing-block::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 8px !important;
+  z-index: -1 !important;
+
+  width: min(92%, 420px) !important;
+  height: 140px !important;
+
+  background-image: url("./assets/img/decor/footer-decor-172.svg?v=54") !important;
+  background-repeat: no-repeat !important;
+  background-position: center bottom !important;
+  background-size: contain !important;
+
+  opacity: 0.52 !important;
+  transform: translateX(-50%) !important;
+  pointer-events: none !important;
+}
+
+/* Small accent near title */
+.closing-block::after {
+  content: "" !important;
+  position: absolute !important;
+  right: max(18px, calc((100vw - 420px) / 2 + 10px)) !important;
+  top: 16px !important;
+  z-index: -1 !important;
+
+  width: 86px !important;
+  height: 86px !important;
+
+  background-image: url("./assets/img/decor/footer-decor-173.svg?v=54") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+
+  opacity: 0.34 !important;
+  transform: rotate(8deg) !important;
+  pointer-events: none !important;
+}
+
+.closing-block h2,
+.closing-block .section-heading h2 {
+  max-width: 420px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  font-size: clamp(2rem, 7.8vw, 2.62rem) !important;
+  line-height: 1.04 !important;
+  text-align: center !important;
+}
+
+.closing-block p {
+  max-width: 390px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+@media (max-width: 430px) {
+  .details-block .detail-elegant-card--book,
+  .details-block .detail-elegant-card--flowers {
+    padding: 40px 22px 42px !important;
+    gap: 24px !important;
+  }
+
+  .details-block .detail-elegant-icon,
+  .details-block .detail-elegant-icon--image {
+    width: 168px !important;
+    height: 168px !important;
+  }
+
+  .details-block .detail-elegant-icon--image img,
+  .details-block .detail-elegant-icon img {
+    width: 164px !important;
+    height: 164px !important;
+  }
+
+  .details-block .detail-elegant-card--book .detail-elegant-icon--image img,
+  .details-block .detail-elegant-card--book .detail-elegant-icon img {
+    width: 178px !important;
+    height: 178px !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-icon--image img,
+  .details-block .detail-elegant-card--flowers .detail-elegant-icon img {
+    width: 184px !important;
+    height: 184px !important;
+  }
+
+  .closing-block {
+    padding-bottom: 90px !important;
+  }
+
+  .closing-block::before {
+    width: 94% !important;
+    height: 118px !important;
+    bottom: 4px !important;
+  }
+
+  .closing-block::after {
+    width: 68px !important;
+    height: 68px !important;
+    right: 18px !important;
+    top: 18px !important;
+    opacity: 0.30 !important;
+  }
+
+  .closing-block h2,
+  .closing-block .section-heading h2 {
+    max-width: 360px !important;
+    font-size: clamp(1.9rem, 7.3vw, 2.22rem) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-elegant-icon--image img,
+  .detail-elegant-icon img {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+/* === KOLA DETAILS BOOK CLOSING DECOR V54 END === */
+
+/* === KOLA STATIC DETAILS ICONS FOOTER DECOR V55 START === */
+/*
+  V55:
+  - book and bouquet SVGs are static and sharper;
+  - icons are larger;
+  - motion is moved to tiny lightweight decorative elements in cards;
+  - closing decor is a real HTML element, not hidden behind z-index;
+  - RSVP / backend untouched.
+*/
+
+/* Details cards: same centered layout for both */
+.details-block .detail-elegant-card--book,
+.details-block .detail-elegant-card--flowers {
+  position: relative !important;
+  overflow: hidden !important;
+
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  justify-items: center !important;
+  align-items: center !important;
+  text-align: center !important;
+
+  gap: 28px !important;
+  padding: 44px 24px 46px !important;
+}
+
+.details-block .detail-elegant-card--book > *,
+.details-block .detail-elegant-card--flowers > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-icon,
+.details-block .detail-elegant-card--book .detail-elegant-icon--image,
+.details-block .detail-elegant-card--book .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon--image,
+.details-block .detail-elegant-card--flowers .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-qr,
+.details-block .detail-elegant-card--flowers .qr-frame {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-content,
+.details-block .detail-elegant-card--flowers .detail-elegant-content {
+  width: 100% !important;
+  max-width: 340px !important;
+  display: grid !important;
+  justify-items: center !important;
+  gap: 14px !important;
+  text-align: center !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-content h3,
+.details-block .detail-elegant-card--flowers .detail-elegant-content h3,
+.details-block .detail-elegant-card--book .detail-elegant-content p,
+.details-block .detail-elegant-card--flowers .detail-elegant-content p {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Big static SVG icons: no blur, no breathing animation */
+.details-block .detail-elegant-icon,
+.details-block .detail-elegant-icon--image {
+  width: 218px !important;
+  height: 218px !important;
+  display: grid !important;
+  place-items: center !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.details-block .detail-elegant-icon--image img,
+.details-block .detail-elegant-icon img {
+  width: 208px !important;
+  height: 208px !important;
+  max-width: none !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-icon--image img,
+.details-block .detail-elegant-card--book .detail-elegant-icon img {
+  width: 224px !important;
+  height: 224px !important;
+}
+
+.details-block .detail-elegant-card--flowers .detail-elegant-icon--image img,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon img {
+  width: 230px !important;
+  height: 230px !important;
+}
+
+/* Lightweight moving details inside cards, not on the main SVG */
+.details-block .detail-elegant-card--book::before,
+.details-block .detail-elegant-card--flowers::before,
+.details-block .detail-elegant-card--book::after,
+.details-block .detail-elegant-card--flowers::after {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+
+  width: 92px !important;
+  height: 92px !important;
+  border-radius: 999px !important;
+
+  background:
+    radial-gradient(circle at 28% 24%, rgba(214, 165, 154, 0.22) 0 5px, transparent 5.5px),
+    radial-gradient(circle at 66% 42%, rgba(185, 188, 167, 0.24) 0 4px, transparent 4.5px),
+    radial-gradient(circle at 42% 72%, rgba(255, 248, 237, 0.52) 0 6px, transparent 6.5px) !important;
+
+  opacity: 0.58 !important;
+  animation: details-card-particles-v55 7.2s ease-in-out infinite !important;
+}
+
+.details-block .detail-elegant-card--book::before,
+.details-block .detail-elegant-card--flowers::before {
+  left: 18px !important;
+  top: 22px !important;
+}
+
+.details-block .detail-elegant-card--book::after,
+.details-block .detail-elegant-card--flowers::after {
+  right: 18px !important;
+  bottom: 26px !important;
+  animation-delay: -2.4s !important;
+}
+
+@keyframes details-card-particles-v55 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.38;
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0) rotate(5deg);
+    opacity: 0.68;
+  }
+}
+
+/* QR stays centered */
+.details-block .detail-elegant-card--flowers .detail-elegant-qr,
+.details-block .detail-elegant-card--flowers .qr-frame,
+.details-block .detail-elegant-qr.qr-frame {
+  width: 100% !important;
+  max-width: 270px !important;
+  margin: 4px auto 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  place-items: center !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* Closing block: visible real SVG decor */
+.closing-block {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+
+  padding: 44px 18px 120px !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.closing-decor-v55 {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
+.closing-block > :not(.closing-decor-v55) {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.closing-decor-v55__floral {
+  position: absolute !important;
+  left: 50% !important;
+  bottom: 8px !important;
+  width: min(94%, 410px) !important;
+  height: 128px !important;
+  object-fit: contain !important;
+  object-position: center bottom !important;
+  transform: translateX(-50%) !important;
+  opacity: 0.64 !important;
+  display: block !important;
+}
+
+.closing-decor-v55__accent {
+  position: absolute !important;
+  right: 22px !important;
+  top: 8px !important;
+  width: 74px !important;
+  height: 74px !important;
+  object-fit: contain !important;
+  opacity: 0.38 !important;
+  transform: rotate(8deg) !important;
+  display: block !important;
+}
+
+.closing-block::before,
+.closing-block::after {
+  content: none !important;
+  display: none !important;
+}
+
+@media (max-width: 430px) {
+  .details-block .detail-elegant-card--book,
+  .details-block .detail-elegant-card--flowers {
+    padding: 42px 20px 44px !important;
+    gap: 26px !important;
+  }
+
+  .details-block .detail-elegant-icon,
+  .details-block .detail-elegant-icon--image {
+    width: 198px !important;
+    height: 198px !important;
+  }
+
+  .details-block .detail-elegant-icon--image img,
+  .details-block .detail-elegant-icon img {
+    width: 190px !important;
+    height: 190px !important;
+  }
+
+  .details-block .detail-elegant-card--book .detail-elegant-icon--image img,
+  .details-block .detail-elegant-card--book .detail-elegant-icon img {
+    width: 204px !important;
+    height: 204px !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-icon--image img,
+  .details-block .detail-elegant-card--flowers .detail-elegant-icon img {
+    width: 210px !important;
+    height: 210px !important;
+  }
+
+  .closing-block {
+    padding-bottom: 104px !important;
+  }
+
+  .closing-decor-v55__floral {
+    width: 96% !important;
+    height: 112px !important;
+    bottom: 4px !important;
+  }
+
+  .closing-decor-v55__accent {
+    width: 62px !important;
+    height: 62px !important;
+    right: 16px !important;
+    top: 10px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details-block .detail-elegant-card--book::before,
+  .details-block .detail-elegant-card--flowers::before,
+  .details-block .detail-elegant-card--book::after,
+  .details-block .detail-elegant-card--flowers::after {
+    animation: none !important;
+  }
+}
+/* === KOLA STATIC DETAILS ICONS FOOTER DECOR V55 END === */
+
+/* === KOLA STRONGER DETAILS FOOTER DECOR V56 START === */
+/*
+  V56:
+  - bigger static book/bouquet SVGs;
+  - stronger but light moving particles inside detail cards;
+  - stronger visible decor in closing block;
+  - no RSVP/backend changes.
+*/
+
+/* Bigger static details icons */
+.details-block .detail-elegant-icon,
+.details-block .detail-elegant-icon--image {
+  width: 250px !important;
+  height: 250px !important;
+  display: grid !important;
+  place-items: center !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.details-block .detail-elegant-icon--image img,
+.details-block .detail-elegant-icon img {
+  width: 238px !important;
+  height: 238px !important;
+  max-width: none !important;
+  display: block !important;
+  object-fit: contain !important;
+  object-position: center !important;
+
+  animation: none !important;
+  transform: none !important;
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.details-block .detail-elegant-card--book .detail-elegant-icon--image img,
+.details-block .detail-elegant-card--book .detail-elegant-icon img {
+  width: 252px !important;
+  height: 252px !important;
+}
+
+.details-block .detail-elegant-card--flowers .detail-elegant-icon--image img,
+.details-block .detail-elegant-card--flowers .detail-elegant-icon img {
+  width: 258px !important;
+  height: 258px !important;
+}
+
+/* Give cards enough space for larger icons */
+.details-block .detail-elegant-card--book,
+.details-block .detail-elegant-card--flowers {
+  gap: 24px !important;
+  padding-top: 42px !important;
+  padding-bottom: 48px !important;
+}
+
+/* Stronger moving light elements in detail cards */
+.details-block .detail-elegant-card--book::before,
+.details-block .detail-elegant-card--flowers::before,
+.details-block .detail-elegant-card--book::after,
+.details-block .detail-elegant-card--flowers::after {
+  width: 132px !important;
+  height: 132px !important;
+  opacity: 0.78 !important;
+
+  background:
+    radial-gradient(circle at 22% 24%, rgba(214, 165, 154, 0.34) 0 7px, transparent 7.7px),
+    radial-gradient(circle at 68% 34%, rgba(185, 188, 167, 0.38) 0 6px, transparent 6.7px),
+    radial-gradient(circle at 44% 76%, rgba(255, 248, 237, 0.72) 0 8px, transparent 8.7px),
+    radial-gradient(circle at 78% 72%, rgba(165, 177, 188, 0.26) 0 5px, transparent 5.7px) !important;
+
+  filter: blur(0.1px) !important;
+  animation: details-card-particles-v56 6.8s ease-in-out infinite !important;
+}
+
+.details-block .detail-elegant-card--book::before,
+.details-block .detail-elegant-card--flowers::before {
+  left: 14px !important;
+  top: 28px !important;
+}
+
+.details-block .detail-elegant-card--book::after,
+.details-block .detail-elegant-card--flowers::after {
+  right: 12px !important;
+  bottom: 34px !important;
+  animation-delay: -2.1s !important;
+}
+
+@keyframes details-card-particles-v56 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg) scale(1);
+    opacity: 0.48;
+  }
+
+  50% {
+    transform: translate3d(0, -11px, 0) rotate(6deg) scale(1.06);
+    opacity: 0.84;
+  }
+}
+
+/* Closing block: stronger decor, still readable */
+.closing-block {
+  position: relative !important;
+  overflow: hidden !important;
+  isolation: isolate !important;
+  padding-bottom: 150px !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+.closing-block::before,
+.closing-block::after {
+  content: none !important;
+  display: none !important;
+}
+
+.closing-decor-v56 {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.closing-block > :not(.closing-decor-v56):not(.closing-decor-v55) {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.closing-decor-v56 img {
+  position: absolute !important;
+  display: block !important;
+  object-fit: contain !important;
+  pointer-events: none !important;
+}
+
+.closing-decor-v56__floral {
+  left: 50% !important;
+  bottom: 8px !important;
+  width: min(106%, 520px) !important;
+  height: 170px !important;
+  transform: translateX(-50%) !important;
+  opacity: 0.88 !important;
+}
+
+.closing-decor-v56__left {
+  left: max(10px, calc((100vw - 430px) / 2 + 2px)) !important;
+  bottom: 56px !important;
+  width: 96px !important;
+  height: 96px !important;
+  opacity: 0.52 !important;
+  transform: rotate(-12deg) !important;
+}
+
+.closing-decor-v56__right {
+  right: max(10px, calc((100vw - 430px) / 2 + 2px)) !important;
+  bottom: 62px !important;
+  width: 94px !important;
+  height: 94px !important;
+  opacity: 0.50 !important;
+  transform: rotate(10deg) scaleX(-1) !important;
+}
+
+.closing-decor-v56__sparkle {
+  right: max(24px, calc((100vw - 430px) / 2 + 24px)) !important;
+  top: 16px !important;
+  width: 78px !important;
+  height: 78px !important;
+  opacity: 0.48 !important;
+  animation: closing-sparkle-v56 4.8s ease-in-out infinite !important;
+}
+
+@keyframes closing-sparkle-v56 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.34;
+  }
+
+  50% {
+    transform: translateY(-4px) rotate(5deg) scale(1.06);
+    opacity: 0.62;
+  }
+}
+
+@media (max-width: 430px) {
+  .details-block .detail-elegant-icon,
+  .details-block .detail-elegant-icon--image {
+    width: 226px !important;
+    height: 226px !important;
+  }
+
+  .details-block .detail-elegant-icon--image img,
+  .details-block .detail-elegant-icon img {
+    width: 218px !important;
+    height: 218px !important;
+  }
+
+  .details-block .detail-elegant-card--book .detail-elegant-icon--image img,
+  .details-block .detail-elegant-card--book .detail-elegant-icon img {
+    width: 232px !important;
+    height: 232px !important;
+  }
+
+  .details-block .detail-elegant-card--flowers .detail-elegant-icon--image img,
+  .details-block .detail-elegant-card--flowers .detail-elegant-icon img {
+    width: 238px !important;
+    height: 238px !important;
+  }
+
+  .details-block .detail-elegant-card--book,
+  .details-block .detail-elegant-card--flowers {
+    padding-top: 40px !important;
+    padding-bottom: 46px !important;
+  }
+
+  .details-block .detail-elegant-card--book::before,
+  .details-block .detail-elegant-card--flowers::before,
+  .details-block .detail-elegant-card--book::after,
+  .details-block .detail-elegant-card--flowers::after {
+    width: 116px !important;
+    height: 116px !important;
+  }
+
+  .closing-block {
+    padding-bottom: 132px !important;
+  }
+
+  .closing-decor-v56__floral {
+    width: 112% !important;
+    height: 145px !important;
+    bottom: 2px !important;
+  }
+
+  .closing-decor-v56__left {
+    width: 76px !important;
+    height: 76px !important;
+    bottom: 48px !important;
+    left: 4px !important;
+  }
+
+  .closing-decor-v56__right {
+    width: 74px !important;
+    height: 74px !important;
+    bottom: 52px !important;
+    right: 4px !important;
+  }
+
+  .closing-decor-v56__sparkle {
+    width: 60px !important;
+    height: 60px !important;
+    right: 18px !important;
+    top: 18px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details-block .detail-elegant-card--book::before,
+  .details-block .detail-elegant-card--flowers::before,
+  .details-block .detail-elegant-card--book::after,
+  .details-block .detail-elegant-card--flowers::after,
+  .closing-decor-v56__sparkle {
+    animation: none !important;
+  }
+}
+/* === KOLA STRONGER DETAILS FOOTER DECOR V56 END === */
+
